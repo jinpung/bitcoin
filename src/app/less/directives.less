@@ -1,0 +1,79 @@
+/** png-time-input */
+.png-time.form-control {
+  padding-left: 10px;
+  position: relative;
+  padding-right: 20px;
+}
+
+.png-time .png-clear{
+  color: #888;
+  position: absolute;
+  right: 5px;
+  &:hover{
+    color: #555;
+  }
+}
+
+.png-time input {
+  border: none;
+  width: 17px;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  cursor: default;
+  outline: 0;
+}
+
+.png-time span{
+  padding: 0 2px;
+}
+
+.png-time input:focus {
+  color: #000;
+}
+
+.png-time input.mode {
+  width: 22px;
+  margin-left: 3px;
+}
+
+.png-time.form-control.time-focus {
+  /*border-color: #66afe9;
+  outline: 0;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);*/
+  border-color: #1ab394 !important;
+}
+
+
+.hoperation-wrapper{
+  table{
+    th{
+      font-style: italic;
+      text-align: center;
+    }
+    td{
+      text-align: right;
+      padding: 5px;
+      .form-control{
+        width: 100px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.dexceptions-wrapper{
+  table{
+    td{
+      white-space: nowrap!important;
+      border-top: none!important;
+      border-bottom: 1px solid #e7eaec;
+      &.date{
+        font-weight: 600;
+      }
+      &.closed{
+        font-style: italic;
+      }
+    }
+  }
+}

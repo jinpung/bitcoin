@@ -1,0 +1,35 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+  <div class="sidebar-collapse">
+    <ul side-navigation class="nav metismenu" id="side-menu">
+      <li class="nav-header">
+
+        <div class="dropdown profile-element" dropdown>
+          <a class="dropdown-toggle" dropdown-toggle href>
+            <span class="clear">
+              <span class="block m-t-xs">
+                <strong class="font-bold">
+                  <span ng-show="main.user.first_name">{{main.user.first_name}}</span>
+                  <span ng-hide="main.user.first_name">{{main.user.username}}</span>
+                </strong>
+              </span>
+              <span class="text-muted text-xs block">
+                <span ng-show="main.user.email">({{main.user.email}})</span>
+              </span>          
+            </span>
+          </a>
+        </div>
+        <div class="logo-element">
+          <img src="/assets/images/logo.png" />
+        </div>
+      </li>
+
+      <li>
+        <a ui-sref="app.dashboard"><i class="fa fa-tachometer" aria-hidden="true"></i> <span class="nav-label">시세보기</span> </a>
+        <a ui-sref="app.users" ng-if="main.user.is_superuser"><i class="fa fa-users"></i> <span class="nav-label">유저목록</span> </a>
+        <a ui-sref="app.datas" ng-if="main.user.is_superuser">><i class="fa fa-list"></i> <span class="nav-label">비트코인관리</span> </a>
+        <a ui-sref="app.account"><i class="fa fa-user"></i> <span class="nav-label">개인정보</span> </a>
+      </li>      
+    </ul>
+
+  </div>
+</nav>

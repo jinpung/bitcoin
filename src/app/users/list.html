@@ -1,0 +1,71 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2><strong>유저목록</strong></h2>
+  </div>
+</div>
+</div>
+
+<div class="wrapper wrapper-content  animated fadeInRight">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="ibox">
+        <div class="ibox-content">
+          <!--<p>
+            All clients need to be verified before you can send email and set a project.
+          </p>-->          
+          <input type="text" placeholder="Search Users" class="input form-control" ng-model="userCtrl.searchName">
+          <div class="clients-list">
+            <div class="table-responsive">
+              <table class="table table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>유저아이디</th>
+                    <th>이름</th>
+                    <th>상태</th>
+                    <th>이메일</th>
+                    <th>사용기간</th>
+                    <th>Ip주소</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="(key, value) in userCtrl.listData| filter:userCtrl.searchName track by value.id"">
+                    <td>{{$index + 1}}</td>
+                    <td>{{value.user.username}}</td>
+                    <td>{{value.user.first_name}}</td>
+                    <td>
+                    	<a ng-click="userCtrl.onActive(value)">
+	                    	<span ng-if="value.user.is_staff" class="label label--mini background-color--primary">가능</span>
+	                  		<span ng-if="!value.user.is_staff" class="label label--mini background-color--mint">불가능</span>
+                  		</a>
+                    </td>
+                    <td>{{value.user.email}}</td>
+                    <td>
+                    	<span class="label label--mini" ng-click="userCtrl.onDeadline(value, date)">to: {{value.last_date|limitTo:10}}</span>
+		                <div class="mdl-textfield mdl-js-textfield" style="width: 150px;padding-top: 5px">
+		                  <input class="mdl-textfield__input" type="date" ng-model="date">
+		                  <button class="btn btn-white btn-sm" ng-show="date && value.s!=true" ng-click="value.s=true;userCtrl.onDeadline(value, date)">보관</button>
+		                </div>
+                    </td>
+                    <td>
+                    	<span class="label label--mini background-color--primary" ng-click="userCtrl.delIp(value)">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                      </span>{{value.ip_address}}
+                    </td>                    
+                    <td>                      
+                      <button class="btn btn-white btn-sm" ng-click="userCtrl.delUser(value.user.id)"><i class="fa fa-trash"></i> 삭제</button>
+                    </td>
+                  </tr>
+                  <tr ng-show="(userCtrl.listData| filter:userCtrl.searchName).length === 0">
+                    <td colspan="8" class="text-center">등록된 유저가 없습니다.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
