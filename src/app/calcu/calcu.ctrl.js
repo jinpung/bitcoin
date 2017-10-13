@@ -9,6 +9,9 @@ angular.module('inspinia').controller('CalcuCtrl', function (financeSvc, $interv
 
   vm.onInit = function () {
     console.log('app init');
+
+    vm.enableSave = false;
+
     vm.row = {};
     vm.row.sell_vmrows = [];
     vm.row.sell_vmrows[0] = { sell_amount: 0, sell_price: 0, sell_budget: 0 };
@@ -245,23 +248,25 @@ angular.module('inspinia').controller('CalcuCtrl', function (financeSvc, $interv
 
       var ary = [];
       console.log(vm.row.sell_vmrows)
-      var header = ['기준화페', '코인종류', '구입나라', '싸이트', '구입가격','구입개수', '구입금액', '구입료','이체료','실지구입개수','판매나라','싸이트'];
+      var header = ['날자','시간','기준화페', '코인종류', '구입나라', '싸이트', '구입가격','구입개수', '구입금액', '구입료','이체료','실지구입개수','판매나라','싸이트'];
       for(var i=0; i<vm.row.sell_vmrows.length;i++){
           header = header.concat(['판매가격','판매개수','판매금액']);
       }
       header = header.concat(['판매수수료','실지판매금액','총구입개수','총지출금액','총판매개수','총판매금액','실제수익']);
 
       var data = [
+          moment().format("YYYY-MM-DD"),//날자
+          moment().format("hh:mm:ss"),//시간
           vm.row.std_currency,
           vm.row.coin,
           vm.row.buy_country,
           vm.row.buy_site,
           vm.row.buy_price,
           vm.row.buy_amount,
-          vm.getBuyBudget(vm.row.buy_price, vm.row.buy_amount),
-          vm.getBuyFee(vm.row.buy_site, vm.row.coin, vm.row.buy_amount),
-          vm.getServiceFee(vm.row.buy_site, vm.row.coin, vm.row.buy_amount),
-          vm.getSellAmount(),
+          vm.getBuyBudget(vm.row.buy_price, vm.row.buy_amount)+ '(' + vm.row.buy_vmrow.currency_name + ')',//구입금액
+          vm.getBuyFee(vm.row.buy_site, vm.row.coin, vm.row.buy_amount),//구입료
+          vm.getServiceFee(vm.row.buy_site, vm.row.coin, vm.row.buy_amount),//이체료
+          vm.getSellAmount(),//실지구입개수
           vm.row.sell_country,
           vm.row.sell_site
       ];
@@ -272,16 +277,16 @@ angular.module('inspinia').controller('CalcuCtrl', function (financeSvc, $interv
           data.push(sellrow.sell_price*sellrow.sell_amount)
       }
 
-      data.push(vm.getSellFee(vm.row.sell_site, vm.row.coin, vm.row.sell_budget_sum));
-      data.push(vm.getRealSellBudget());
+      data.push(vm.getSellFee(vm.row.sell_site, vm.row.coin, vm.row.sell_budget_sum))//판매수수료;
+      data.push(vm.getRealSellBudget()+ '(' + vm.row.sell_vmrow.currency_name + ')');//실지판매금액
 
-      data.push(vm.calc.calc_purchase_coins);
-      data.push(vm.calc.calc_pay_money);
+      data.push(vm.calc.calc_purchase_coins);//총구입개수
+      data.push(vm.calc.calc_pay_money+ '(' + vm.row.std_currency + ')');//총지출금액
 
-      data.push(vm.calc.calc_purchase_coins);
-      data.push(vm.calc.calc_sell_money);
+      data.push(vm.calc.calc_purchase_coins);//총판매개수
+      data.push(vm.calc.calc_sell_money+ '(' + vm.row.std_currency + ')');//총판매금액
 
-      data.push(vm.calc.calc_profit );
+      data.push(vm.calc.calc_profit+ '(' + vm.row.std_currency + ')');//실제수익
 
 
       ary.push(header);
@@ -292,7 +297,6 @@ angular.module('inspinia').controller('CalcuCtrl', function (financeSvc, $interv
 
   function init() {
     // console.log('request init');
-    vm.enableSave = false;
     financeSvc.getVMRate().then(function (res) {
       vm.vmRate = res.data.results;
       financeSvc.getExchangeRate().then(function (res) {

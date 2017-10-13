@@ -156,7 +156,9 @@
                         </tr>
                         <tr  ng-repeat="(idx, sellrow) in calcuCtrl.row.sell_vmrows">
                             <td>
-                                <span style='cursor: pointer; display: inline-block;' ng-if='calcuCtrl.row.sell_vmrows.length > 1' ng-click="calcuCtrl.deleteSellRow(idx)">-</span>
+                                <a style='cursor: pointer; display: inline-block;' class="red" ng-if='calcuCtrl.row.sell_vmrows.length > 1' ng-click="calcuCtrl.deleteSellRow(idx)">
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                </a>
                             </td>
                             <td class="trade-cell">
                                 <input id="" ng-model="sellrow.sell_price">
@@ -168,17 +170,19 @@
                                 <input ng-value="sellrow.sell_budget = sellrow.sell_price*sellrow.sell_amount | number: 5 ">
                             </td>
                             <td>
-                                <span style='cursor: pointer; display: inline-block;' ng-if='idx==calcuCtrl.row.sell_vmrows.length -1' ng-click="calcuCtrl.addSellRow()">+</span>
+                                <a style='cursor: pointer; display: inline-block;' ng-if='idx==calcuCtrl.row.sell_vmrows.length -1' ng-click="calcuCtrl.addSellRow()">
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                </a>
                             </td>
                         </tr>
                         <tr>
                             <td></td>
                             <td class="trade-cell"><strong>총 계</strong></td>
                             <td class="trade-cell">
-                                <span class="green" ng-value="calcuCtrl.getSellAmountSum()|number:5" ng-bind="calcuCtrl.row.sell_amount_sum"><strong>{{calcuCtrl.row.sell_amount_sum | number:5}}</strong></span>
+                                <span class="green" ng-value="calcuCtrl.getSellAmountSum()|number:5" ><strong>{{calcuCtrl.row.sell_amount_sum | number:5}}</strong></span>
                             </td>
                             <td class="trade-cell">
-                                <span class="green" ng-bind="calcuCtrl.row.sell_budget_sum"><strong>{{calcuCtrl.row.sell_budget_sum | number:5}}</strong></span>
+                                <span class="green"><strong>{{calcuCtrl.row.sell_budget_sum | number:5}}</strong></span>
                             </td>
                             <td></td>
                         </tr>
@@ -270,7 +274,7 @@
                                 실제수익
                             </td>
                             <td class="calc-cell" colspan="3">
-                                <span>{{(calcuCtrl.calc.calc_profit | number:5)+ '(' + calcuCtrl.row.sell_vmrow.currency_name + ')'}}</span>
+                                <span>{{(calcuCtrl.calc.calc_profit | number:5)+ '(' + calcuCtrl.row.std_currency + ')'}}</span>
                             </td>
                         </tr>
                     </table>
