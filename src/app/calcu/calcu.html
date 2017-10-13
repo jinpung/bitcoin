@@ -1,308 +1,311 @@
-<!-- <h2>Live Virtual Coin</h2> -->
-<!-- <p>:</p> -->
 <div class="calculator-container" ng-controller="CalcuCtrl as calcuCtrl">
-    <div class="calculator-container trade-calcu">
-        <div class="row top-trade">
-            <div class="clear trade-row">
-                <label class="blue" style="font-size: 16px; text-align: center"><strong>거래계산장</strong></label>
+    <!-- <h2>Live Virtual Coin</h2> -->
+    <!-- <p>:</p> -->
+    <div class="calculator-container">
+        <div class="calculator-container trade-calcu">
+            <div class="row top-trade">
+                <div class="clear trade-row">
+                    <label class="blue" style="font-size: 16px; text-align: center"><strong>거래계산장</strong></label>
+                </div>
+                <div class="clear trade-row">
+                    <table>
+                        <tr>
+                            <td class="trade-cell">기준화페</td>
+                            <td class="trade-cell">
+                                <select ng-model="calcuCtrl.row.std_currency" ng-change="calcuCtrl.stdcurrency_filter_change()">
+                                    <option ng-repeat="currency in calcuCtrl.currencyArray" value="{{currency}}">{{currency}}</option>
+                                </select>
+                            </td>
+                            <td class="trade-cell">코인종류</td>
+                            <td class="trade-cell">
+                                <select ng-change="calcuCtrl.buy_filter_change()" ng-model="calcuCtrl.row.coin">
+                                    <option ng-repeat="coin in calcuCtrl.coins" value="{{coin}}">{{coin}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-            <div class="clear trade-row">
-                <table>
-                    <tr>
-                        <td class="trade-cell">기준화페</td>
-                        <td class="trade-cell">
-                            <select ng-model="calcuCtrl.row.std_currency" ng-change="calcuCtrl.stdcurrency_filter_change()">
-                                <option ng-repeat="currency in calcuCtrl.currencyArray" value="{{currency}}">{{currency}}</option>
-                            </select>
-                        </td>
-                        <td class="trade-cell">코인종류</td>
-                        <td class="trade-cell">
-                            <select ng-change="calcuCtrl.buy_filter_change()" ng-model="calcuCtrl.row.coin">
-                                <option ng-repeat="coin in calcuCtrl.coins" value="{{coin}}">{{coin}}</option>
-                            </select>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <!------------------- BUY ---------------------->
-        <div class="row buy-trade">
-            <div class="clear trade-row">
-                <label class="green"><strong>코인구입</strong></label>
-            </div>
-            <div class="clear trade-row">
-                <table>
-                    <tr>
-                        <td class="trade-cell">구입나라</td>
-                        <td class="trade-cell">
-                            <select ng-model="calcuCtrl.row.buy_country">
-                                <option ng-repeat="country in calcuCtrl.countries" value="{{country}}">{{country}}</option>
-                            </select>
-                        </td>
-                        <td class="trade-cell">&nbsp&nbsp&nbsp사이트</td>
-                        <td class="trade-cell">
-                            <select ng-change="calcuCtrl.buy_filter_change()" ng-model="calcuCtrl.row.buy_site">
-                                <option ng-repeat="site in calcuCtrl.getsites(calcuCtrl.row.buy_country)" value="{{site.siteName}}">{{site.siteName}}</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <!--<tr>-->
+            <!------------------- BUY ---------------------->
+            <div class="row buy-trade">
+                <div class="clear trade-row">
+                    <label class="green"><strong>코인구입</strong></label>
+                </div>
+                <div class="clear trade-row">
+                    <table>
+                        <tr>
+                            <td class="trade-cell">구입나라</td>
+                            <td class="trade-cell">
+                                <select ng-model="calcuCtrl.row.buy_country">
+                                    <option ng-repeat="country in calcuCtrl.countries" value="{{country}}">{{country}}</option>
+                                </select>
+                            </td>
+                            <td class="trade-cell">&nbsp&nbsp&nbsp싸이트</td>
+                            <td class="trade-cell">
+                                <select ng-change="calcuCtrl.buy_filter_change()" ng-model="calcuCtrl.row.buy_site">
+                                    <option ng-repeat="site in calcuCtrl.getsites(calcuCtrl.row.buy_country)" value="{{site.siteName}}">{{site.siteName}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <!--<tr>-->
                         <!--<td class="trade-cell">현지시세</td>-->
                         <!--<td class="trade-cell" colspan="3"><span class="green">{{calcuCtrl.getVmRate(calcuCtrl.row.buy_site, calcuCtrl.row.coin)}}</span></td>-->
-                    <!--</tr>-->
-                </table>
-            </div>
-            <!--{{calcuCtrl.row.buy_site}}-->
-            <div class="clear trade-row">
-                <table style="table-layout: fixed">
-                    <tr>
-                        <td class="trade-money-cell">구입가격({{calcuCtrl.row.buy_vmrow.currency_name}})</td>
-                        <td class="trade-amount-cell">구입개수</td>
-                        <td class="trade-money-cell">구입금액({{calcuCtrl.row.buy_vmrow.currency_name}})</td>
-                    </tr>
-                    <tr>
-                        <td class="trade-cell">
-                            <input id="" ng-model="calcuCtrl.row.buy_price">
-                        </td>
-                        <td class="trade-cell">
-                            <input id="" style="width:90px" ng-model="calcuCtrl.row.buy_amount">
-                        </td>
-                        <td class="trade-cell">
-                            <input id="" ng-value="calcuCtrl.getBuyBudget(calcuCtrl.row.buy_price, calcuCtrl.row.buy_amount) | number:5">
-                        </td>
-                    </tr>
-                    <!--<tr>-->
-                    <!--<td class="trade-cell">현지시세</td>-->
-                    <!--<td class="trade-cell" colspan="3"><span class="green">{{calcuCtrl.getVmRate(calcuCtrl.row.buy_site, calcuCtrl.row.coin)}}</span></td>-->
-                    <!--</tr>-->
-                    <tr>
-                        <td class="trade-cell">구입료</td>
-                        <td class="trade-cell">이체료</td>
-                        <td class="trade-cell">실지구입개수</td>
-                    </tr>
-                    <tr>
-                        <td class="trade-cell">
-                            <span class="green">{{(calcuCtrl.getBuyFee(calcuCtrl.row.buy_site, calcuCtrl.row.coin, calcuCtrl.row.buy_amount) | number:5) + '(' + calcuCtrl.row.coin + ')'}}</span>
-                        </td>
-                        <td class="trade-cell">
-                            <span class="green">{{calcuCtrl.getServiceFee(calcuCtrl.row.buy_site, calcuCtrl.row.coin, calcuCtrl.row.buy_amount) + '(' + calcuCtrl.row.coin + ')'}}</span>
-                        </td>
-                        <td class="trade-cell">
-                            <span class="green">{{(calcuCtrl.getSellAmount()|number:5) + '(' + calcuCtrl.row.coin + ')'}}</span>
-                        </td>
-                    </tr>
-                </table>
-                <!--<div class="clear sell-des">-->
+                        <!--</tr>-->
+                    </table>
+                </div>
+                <!--{{calcuCtrl.row.buy_site}}-->
+                <div class="clear trade-row">
+                    <table style="table-layout: fixed">
+                        <tr>
+                            <td class="trade-money-cell">구입가격({{calcuCtrl.row.buy_vmrow.currency_name}})</td>
+                            <td class="trade-amount-cell">구입개수</td>
+                            <td class="trade-money-cell">구입금액({{calcuCtrl.row.buy_vmrow.currency_name}})</td>
+                        </tr>
+                        <tr>
+                            <td class="trade-cell">
+                                <input id="" ng-model="calcuCtrl.row.buy_price">
+                            </td>
+                            <td class="trade-cell">
+                                <input id="" style="width:90px" ng-model="calcuCtrl.row.buy_amount">
+                            </td>
+                            <td class="trade-cell">
+                                <input id="" ng-value="calcuCtrl.getBuyBudget(calcuCtrl.row.buy_price, calcuCtrl.row.buy_amount) | number:5">
+                            </td>
+                        </tr>
+                        <!--<tr>-->
+                        <!--<td class="trade-cell">현지시세</td>-->
+                        <!--<td class="trade-cell" colspan="3"><span class="green">{{calcuCtrl.getVmRate(calcuCtrl.row.buy_site, calcuCtrl.row.coin)}}</span></td>-->
+                        <!--</tr>-->
+                        <tr>
+                            <td class="trade-cell">구입료</td>
+                            <td class="trade-cell">이체료</td>
+                            <td class="trade-cell">실지구입개수</td>
+                        </tr>
+                        <tr>
+                            <td class="trade-cell">
+                                <span class="green">{{(calcuCtrl.getBuyFee(calcuCtrl.row.buy_site, calcuCtrl.row.coin, calcuCtrl.row.buy_amount) | number:5) + '(' + calcuCtrl.row.coin + ')'}}</span>
+                            </td>
+                            <td class="trade-cell">
+                                <span class="green">{{calcuCtrl.getServiceFee(calcuCtrl.row.buy_site, calcuCtrl.row.coin, calcuCtrl.row.buy_amount) + '(' + calcuCtrl.row.coin + ')'}}</span>
+                            </td>
+                            <td class="trade-cell">
+                                <span class="green">{{(calcuCtrl.getSellAmount()|number:5) + '(' + calcuCtrl.row.coin + ')'}}</span>
+                            </td>
+                        </tr>
+                    </table>
+                    <!--<div class="clear sell-des">-->
                     <!--<div class="price-des">구입가격({{calcuCtrl.row.buy_vmrow.currency_name}})</div>-->
                     <!--<div class="num-des">구입개수({{calcuCtrl.row.buy_vmrow.currency_name}})</div>-->
                     <!--<div class="money-des">금액({{calcuCtrl.row.buy_vmrow.currency_name}})</div>-->
-                <!--</div>-->
-                <!--<div class="clear sell-detail">-->
+                    <!--</div>-->
+                    <!--<div class="clear sell-detail">-->
                     <!--<input id="" ng-model="calcuCtrl.row.buy_price">-->
                     <!--<span class="cheng">*</span>-->
                     <!--<input id="" ng-model="calcuCtrl.row.buy_amount">-->
                     <!--<span class="equal">=</span>-->
                     <!--<input id="" ng-value="calcuCtrl.getBudget(calcuCtrl.row.buy_price, calcuCtrl.row.buy_amount)">-->
-                <!--</div>-->
-            </div>
+                    <!--</div>-->
+                </div>
 
-            <!--<div class="clear trade-row">-->
+                <!--<div class="clear trade-row">-->
                 <!--<div class="col-sm-6 banlance">구입료: <span class="green">{{calcuCtrl.getBuyFee(calcuCtrl.row.buy_site, calcuCtrl.row.coin, calcuCtrl.row.buy_amount) + '(' + calcuCtrl.row.coin + ')'}}</span></div>-->
                 <!--<div class="col-sm-6 banlance">이체료: <span class="green">{{calcuCtrl.getServiceFee(calcuCtrl.row.buy_site, calcuCtrl.row.coin, calcuCtrl.row.buy_amount) + '(' + calcuCtrl.row.coin + ')'}}</span></div>-->
-            <!--</div>-->
-            <!--<div class="clear trade-row">-->
-                <!--<div class="banlance">실제구입개수: <span class="green">{{calcuCtrl.getSellAmount() + '(' + calcuCtrl.row.coin + ')'}}</span></div>-->
-            <!--</div>-->
-
-        </div>
-
-        <!------------------- SELL ---------------------->
-        <div class="sell-trade" ng-style="{ 'margin-right': '10px', 'margin-left': '10px', 'margin-top': '10px', 'height': calcuCtrl.sell_height + 'px', 'border-bottom': 'solid 1px #d9d9d9'}">
-            <div class="clear trade-row">
-                <label class="red"><strong>코인매각</strong></label>
-            </div>
-            <div class="trade-row">
-                <table style="table-layout: fixed">
-                    <tr>
-                        <td class="trade-cell">판매나라</td>
-                        <td class="trade-cell">
-                            <select ng-model="calcuCtrl.row.sell_country">
-                                <option ng-repeat="country in calcuCtrl.countries" value="{{country}}">{{country}}</option>
-                            </select>
-                        </td>
-                        <td class="trade-cell">&nbsp&nbsp&nbsp싸이트</td>
-                        <td class="trade-cell">
-                            <select ng-change="calcuCtrl.sell_filter_change()" ng-model="calcuCtrl.row.sell_site">
-                                <option ng-repeat="site in calcuCtrl.getsites(calcuCtrl.row.sell_country)" value="{{site.siteName}}">{{site.siteName}}</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <!--<tr>-->
-                    <!--<td class="trade-cell">현지시세</td>-->
-                    <!--<td class="trade-cell" colspan="3"><span class="green">{{calcuCtrl.getVmRate(calcuCtrl.row.buy_site, calcuCtrl.row.coin)}}</span></td>-->
-                    <!--</tr>-->
-                </table>
-            </div>
-
-            <div class="clear trade-row">
-                <table style="table-layout: fixed">
-                    <tr style="table-layout: fixed">
-                        <td></td>
-                        <td class="trade-money-cell">판매가격({{calcuCtrl.row.sell_vmrow.currency_name}})</td>
-                        <td class="trade-amount-cell">판매개수</td>
-                        <td class="trade-money-cell">판매금액({{calcuCtrl.row.sell_vmrow.currency_name}})</td>
-                        <td></td>
-                    </tr>
-                    <tr  ng-repeat="(idx, sellrow) in calcuCtrl.row.sell_vmrows">
-                        <td>
-                            <span style='cursor: pointer; display: inline-block;' ng-if='calcuCtrl.row.sell_vmrows.length > 1' ng-click="calcuCtrl.deleteSellRow(idx)">-</span>
-                        </td>
-                        <td class="trade-cell">
-                            <input id="" ng-model="sellrow.sell_price">
-                        </td>
-                        <td class="trade-cell">
-                            <input id="" style="width: 90px" ng-model="sellrow.sell_amount" ng-change="calcuCtrl.getSellAmountSum()">
-                        </td>
-                        <td class="trade-cell">
-                            <input ng-value="sellrow.sell_budget = sellrow.sell_price*sellrow.sell_amount | number: 5 ">
-                        </td>
-                        <td>
-                            <span style='cursor: pointer; display: inline-block;' ng-if='idx==calcuCtrl.row.sell_vmrows.length -1' ng-click="calcuCtrl.addSellRow()">+</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td class="trade-cell"><strong>총 계</strong></td>
-                        <td class="trade-cell">
-                            <span class="green" ng-value="calcuCtrl.getSellAmountSum()|number:5" ng-bind="calcuCtrl.row.sell_amount_sum"><strong>{{calcuCtrl.row.sell_amount_sum | number:5}}</strong></span>
-                        </td>
-                        <td class="trade-cell">
-                            <span class="green" ng-bind="calcuCtrl.row.sell_budget_sum"><strong>{{calcuCtrl.row.sell_budget_sum | number:5}}</strong></span>
-                        </td>
-                        <td></td>
-                    </tr>
-                </table>
-                <table>
-                    <tr>
-                        <td></td>
-                        <td class="trade-cell"><strong>판매수수료</strong></td>
-                        <td class="trade-cell">
-                            <span class="green"><strong>{{(calcuCtrl.getSellFee(calcuCtrl.row.sell_site, calcuCtrl.row.coin, calcuCtrl.row.sell_budget_sum)|number:5) + '(' + calcuCtrl.row.sell_vmrow.currency_name + ')'}}</strong></span>
-                        </td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td class="trade-cell"><strong>실지판매금액</strong></td>
-                        <td class="trade-cell">
-                            <span class="trade-currency"><strong>{{(calcuCtrl.getRealSellBudget()|number:5)  + '(' + calcuCtrl.row.sell_vmrow.currency_name + ')'}}</strong></span>
-                        </td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                </table>
-
-            </div>
-
-            <!--<div class="clear trade-row">-->
-                <!--<div class="banlance">현지판매시세: <span class="red">{{calcuCtrl.getVmRate(calcuCtrl.row.sell_site, calcuCtrl.row.coin)}}</span></div>-->
-            <!--</div>-->
-
-            <!--<div class="clear trade-row">-->
-                <!--<div class="clear sell-detail" ng-repeat="(idx, sellrow) in calcuCtrl.sellrows">-->
-                    <!--<input id="" ng-model="sellrow.sell_price">-->
-                    <!--<span class="cheng">*</span>-->
-                    <!--<input id="" ng-model="sellrow.sell_amount">-->
-                    <!--<span class="equal">=</span>-->
-                    <!--<input ng-value="sellrow.sell_budget = sellrow.sell_price*sellrow.sell_amount ">-->
-                    <!--<span style='cursor: pointer; display: inline-block;' ng-if='calcuCtrl.sellrows.length != 1' ng-click="calcuCtrl.deleteSellRow(idx)">-</span>-->
-                    <!--<span style='cursor: pointer; display: inline-block;' ng-if='idx==calcuCtrl.sellrows.length -1' ng-click="calcuCtrl.addSellRow()">+</span>-->
                 <!--</div>-->
-            <!--</div>-->
+                <!--<div class="clear trade-row">-->
+                <!--<div class="banlance">실제구입개수: <span class="green">{{calcuCtrl.getSellAmount() + '(' + calcuCtrl.row.coin + ')'}}</span></div>-->
+                <!--</div>-->
 
-            <!--<div class="clear trade-row">-->
+            </div>
+
+            <!------------------- SELL ---------------------->
+            <div class="sell-trade" ng-style="{ 'margin-right': '10px', 'margin-left': '10px', 'width': '400px', 'margin-top': '10px', 'height': calcuCtrl.sell_height + 'px', 'border-bottom': 'solid 1px #d9d9d9'}">
+                <div class="clear trade-row">
+                    <label class="red"><strong>코인매각</strong></label>
+                </div>
+                <div class="trade-row">
+                    <table style="table-layout: fixed">
+                        <tr>
+                            <td class="trade-cell">판매나라</td>
+                            <td class="trade-cell">
+                                <select ng-model="calcuCtrl.row.sell_country">
+                                    <option ng-repeat="country in calcuCtrl.countries" value="{{country}}">{{country}}</option>
+                                </select>
+                            </td>
+                            <td class="trade-cell">&nbsp&nbsp&nbsp싸이트</td>
+                            <td class="trade-cell">
+                                <select ng-change="calcuCtrl.sell_filter_change()" ng-model="calcuCtrl.row.sell_site">
+                                    <option ng-repeat="site in calcuCtrl.getsites(calcuCtrl.row.sell_country)" value="{{site.siteName}}">{{site.siteName}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <!--<tr>-->
+                        <!--<td class="trade-cell">현지시세</td>-->
+                        <!--<td class="trade-cell" colspan="3"><span class="green">{{calcuCtrl.getVmRate(calcuCtrl.row.buy_site, calcuCtrl.row.coin)}}</span></td>-->
+                        <!--</tr>-->
+                    </table>
+                </div>
+
+                <div class="clear trade-row">
+                    <table style="table-layout: fixed">
+                        <tr style="table-layout: fixed">
+                            <td></td>
+                            <td class="trade-money-cell">판매가격({{calcuCtrl.row.sell_vmrow.currency_name}})</td>
+                            <td class="trade-amount-cell">판매개수</td>
+                            <td class="trade-money-cell">판매금액({{calcuCtrl.row.sell_vmrow.currency_name}})</td>
+                            <td></td>
+                        </tr>
+                        <tr  ng-repeat="(idx, sellrow) in calcuCtrl.row.sell_vmrows">
+                            <td>
+                                <span style='cursor: pointer; display: inline-block;' ng-if='calcuCtrl.row.sell_vmrows.length > 1' ng-click="calcuCtrl.deleteSellRow(idx)">-</span>
+                            </td>
+                            <td class="trade-cell">
+                                <input id="" ng-model="sellrow.sell_price">
+                            </td>
+                            <td class="trade-cell">
+                                <input id="" style="width: 90px" ng-model="sellrow.sell_amount" ng-change="calcuCtrl.getSellAmountSum()">
+                            </td>
+                            <td class="trade-cell">
+                                <input ng-value="sellrow.sell_budget = sellrow.sell_price*sellrow.sell_amount | number: 5 ">
+                            </td>
+                            <td>
+                                <span style='cursor: pointer; display: inline-block;' ng-if='idx==calcuCtrl.row.sell_vmrows.length -1' ng-click="calcuCtrl.addSellRow()">+</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="trade-cell"><strong>총 계</strong></td>
+                            <td class="trade-cell">
+                                <span class="green" ng-value="calcuCtrl.getSellAmountSum()|number:5" ng-bind="calcuCtrl.row.sell_amount_sum"><strong>{{calcuCtrl.row.sell_amount_sum | number:5}}</strong></span>
+                            </td>
+                            <td class="trade-cell">
+                                <span class="green" ng-bind="calcuCtrl.row.sell_budget_sum"><strong>{{calcuCtrl.row.sell_budget_sum | number:5}}</strong></span>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td></td>
+                            <td class="trade-cell"><strong>판매수수료</strong></td>
+                            <td class="trade-cell">
+                                <span class="green"><strong>{{(calcuCtrl.getSellFee(calcuCtrl.row.sell_site, calcuCtrl.row.coin, calcuCtrl.row.sell_budget_sum)|number:5) + '(' + calcuCtrl.row.sell_vmrow.currency_name + ')'}}</strong></span>
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="trade-cell"><strong>실지판매금액</strong></td>
+                            <td class="trade-cell">
+                                <span class="trade-currency"><strong>{{(calcuCtrl.getRealSellBudget()|number:5)  + '(' + calcuCtrl.row.sell_vmrow.currency_name + ')'}}</strong></span>
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                    </table>
+
+                </div>
+
+                <!--<div class="clear trade-row">-->
+                <!--<div class="banlance">현지판매시세: <span class="red">{{calcuCtrl.getVmRate(calcuCtrl.row.sell_site, calcuCtrl.row.coin)}}</span></div>-->
+                <!--</div>-->
+
+                <!--<div class="clear trade-row">-->
+                <!--<div class="clear sell-detail" ng-repeat="(idx, sellrow) in calcuCtrl.sellrows">-->
+                <!--<input id="" ng-model="sellrow.sell_price">-->
+                <!--<span class="cheng">*</span>-->
+                <!--<input id="" ng-model="sellrow.sell_amount">-->
+                <!--<span class="equal">=</span>-->
+                <!--<input ng-value="sellrow.sell_budget = sellrow.sell_price*sellrow.sell_amount ">-->
+                <!--<span style='cursor: pointer; display: inline-block;' ng-if='calcuCtrl.sellrows.length != 1' ng-click="calcuCtrl.deleteSellRow(idx)">-</span>-->
+                <!--<span style='cursor: pointer; display: inline-block;' ng-if='idx==calcuCtrl.sellrows.length -1' ng-click="calcuCtrl.addSellRow()">+</span>-->
+                <!--</div>-->
+                <!--</div>-->
+
+                <!--<div class="clear trade-row">-->
                 <!--<div class="banlance">판매수수료: <span class="green">{{calcuCtrl.getSellFee(calcuCtrl.row.sell_site, calcuCtrl.row.coin, calcuCtrl.row.sellMoney)}}</span></div>-->
-            <!--</div>-->
-            <!--<div class="clear trade-row">-->
+                <!--</div>-->
+                <!--<div class="clear trade-row">-->
                 <!--<div class="banlance">실제금액 <span class="trade-currency">($)</span>:  0.0000</div>-->
-            <!--</div>-->
-        </div>
+                <!--</div>-->
+            </div>
 
-        <div id="lastEntrusts" class="ten-nodeal">
-            <div class="clear trade-row">
-                <label class="blue"><strong>수익계산 ( {{calcuCtrl.row.coin}} / {{calcuCtrl.row.std_currency}} )</strong></label>
-            </div>
-            <div class="clear trade-row">
-                <table style="width: 400px; table-layout: fixed">
-                    <tr>
-                        <td class="calc-cell-label">
-                            구입개수:
-                        </td>
-                        <td class="calc-cell" style="width:110px; overflow: hidden; text-overflow: ellipsis">
-                            <span>{{(calcuCtrl.calc.calc_purchase_coins | number:5)}}</span>
-                        </td>
-                        <td class="calc-cell-label">
-                            지출금액:
-                        </td>
-                        <td class="calc-cell" style="overflow: hidden; text-overflow: ellipsis;">
-                            <span>{{(calcuCtrl.calc.calc_pay_money | number:5)}}</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="calc-cell-label">
-                            판매개수:
-                        </td>
-                        <td class="calc-cell" style="overflow: hidden; text-overflow: ellipsis">
-                            <span>{{(calcuCtrl.calc.calc_purchase_coins | number:5)}}</span>
-                        </td>
-                        <td class="calc-cell-label">
-                            판매금액:
-                        </td>
-                        <td class="calc-cell" style="overflow: hidden; text-overflow: ellipsis">
-                            <span>{{(calcuCtrl.calc.calc_sell_money | number:5)}}</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="calc-cell-label">
-                            실제수익
-                        </td>
-                        <td class="calc-cell" colspan="3">
-                            <span>{{(calcuCtrl.calc.calc_profit | number:5)+ '(' + calcuCtrl.row.sell_vmrow.currency_name + ')'}}</span>
-                        </td>
-                    </tr>
-                </table>
-            <!--<div class="nodeal-operation-des">-->
-                <!--<div class="entrust-type">구입개수:&nbsp&nbsp&nbsp</div>-->
-                <!--<div class="entrust-price" ng-model="calc_purchase_coins">{{calcuCtrl.calc_purchase_coins + '('+ calcuCtrl.row.coin  + ')'}}</div>-->
-                <!--<div class="clearfix"></div>-->
-            <!--</div>-->
-            <!--<div class="nodeal-operation-des">-->
-                <!--<div class="entrust-type">지출금액:&nbsp&nbsp&nbsp</div>-->
-                <!--<div class="entrust-price" ng-model="calcuCtrl.calc_pay_money">{{calcuCtrl.calc_pay_money + '(' + calcuCtrl.row.sell_vmrow.currency_name + ')'}}</div>-->
-                <!--<div class="clearfix"></div>-->
-            <!--</div>-->
-            <!--<div class="nodeal-operation-des">-->
-                <!--<div class="entrust-type">판매개수:&nbsp&nbsp&nbsp</div>-->
-                <!--<div class="entrust-price" ng-model="calc_sell_coins">{{calcuCtrl.calc_sell_coins + '('+ calcuCtrl.row.coin  + ')'}}</div>-->
-                <!--<div class="clearfix"></div>-->
-            <!--</div>-->
-            <!--<div class="nodeal-operation-des">-->
-                <!--<div class="entrust-type">판매금액:&nbsp&nbsp&nbsp</div>-->
-                <!--<div class="entrust-price" ng-model="calc_recv_money">{{calcuCtrl.calc_sell_money + '(' + calcuCtrl.row.sell_vmrow.currency_name + ')'}}</div>-->
-                <!--<div class="clearfix"></div>-->
-            <!--</div>-->
-            <!--<div class="nodeal-operation-des">-->
-                <!--<div class="entrust-type">실제수익:&nbsp&nbsp&nbsp</div>-->
-                <!--<div class="entrust-price" ng-model="calc_profit">{{calcuCtrl.calc_profit + '(' + calcuCtrl.row.sell_vmrow.currency_name + ')'}}</div>-->
-                <!--<div class="clearfix"></div>-->
-            <!--</div>-->
-            <div class="clear trade-row" style="text-align: center">                
-                <button type="button" class="btn btn-warning" style="margin-top: 10px" ng-click="calcuCtrl.Calculate()">계산</button>
-                <button type="button" class="btn btn-success" style="margin-top: 10px" ng-click="calcuCtrl.onInit()">새로작성</button>
-                <div class="clearfix"></div>
-            </div>
+            <div id="lastEntrusts" class="ten-nodeal">
+                <div class="clear trade-row">
+                    <label class="blue"><strong>수익계산 ( {{calcuCtrl.row.coin}} / {{calcuCtrl.row.std_currency}} )</strong></label>
+                </div>
+                <div class="clear trade-row">
+                    <table style="width: 400px; table-layout: fixed">
+                        <tr>
+                            <td class="calc-cell-label">
+                                구입개수:
+                            </td>
+                            <td class="calc-cell" style="width:110px; overflow: hidden; text-overflow: ellipsis">
+                                <span>{{(calcuCtrl.calc.calc_purchase_coins | number:5)}}</span>
+                            </td>
+                            <td class="calc-cell-label">
+                                지출금액:
+                            </td>
+                            <td class="calc-cell" style="overflow: hidden; text-overflow: ellipsis;">
+                                <span>{{(calcuCtrl.calc.calc_pay_money | number:5)}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="calc-cell-label">
+                                판매개수:
+                            </td>
+                            <td class="calc-cell" style="overflow: hidden; text-overflow: ellipsis">
+                                <span>{{(calcuCtrl.calc.calc_purchase_coins | number:5)}}</span>
+                            </td>
+                            <td class="calc-cell-label">
+                                판매금액:
+                            </td>
+                            <td class="calc-cell" style="overflow: hidden; text-overflow: ellipsis">
+                                <span>{{(calcuCtrl.calc.calc_sell_money | number:5)}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="calc-cell-label">
+                                실제수익
+                            </td>
+                            <td class="calc-cell" colspan="3">
+                                <span>{{(calcuCtrl.calc.calc_profit | number:5)+ '(' + calcuCtrl.row.sell_vmrow.currency_name + ')'}}</span>
+                            </td>
+                        </tr>
+                    </table>
+                    <!--<div class="nodeal-operation-des">-->
+                    <!--<div class="entrust-type">구입개수:&nbsp&nbsp&nbsp</div>-->
+                    <!--<div class="entrust-price" ng-model="calc_purchase_coins">{{calcuCtrl.calc_purchase_coins + '('+ calcuCtrl.row.coin  + ')'}}</div>-->
+                    <!--<div class="clearfix"></div>-->
+                    <!--</div>-->
+                    <!--<div class="nodeal-operation-des">-->
+                    <!--<div class="entrust-type">지출금액:&nbsp&nbsp&nbsp</div>-->
+                    <!--<div class="entrust-price" ng-model="calcuCtrl.calc_pay_money">{{calcuCtrl.calc_pay_money + '(' + calcuCtrl.row.sell_vmrow.currency_name + ')'}}</div>-->
+                    <!--<div class="clearfix"></div>-->
+                    <!--</div>-->
+                    <!--<div class="nodeal-operation-des">-->
+                    <!--<div class="entrust-type">판매개수:&nbsp&nbsp&nbsp</div>-->
+                    <!--<div class="entrust-price" ng-model="calc_sell_coins">{{calcuCtrl.calc_sell_coins + '('+ calcuCtrl.row.coin  + ')'}}</div>-->
+                    <!--<div class="clearfix"></div>-->
+                    <!--</div>-->
+                    <!--<div class="nodeal-operation-des">-->
+                    <!--<div class="entrust-type">판매금액:&nbsp&nbsp&nbsp</div>-->
+                    <!--<div class="entrust-price" ng-model="calc_recv_money">{{calcuCtrl.calc_sell_money + '(' + calcuCtrl.row.sell_vmrow.currency_name + ')'}}</div>-->
+                    <!--<div class="clearfix"></div>-->
+                    <!--</div>-->
+                    <!--<div class="nodeal-operation-des">-->
+                    <!--<div class="entrust-type">실제수익:&nbsp&nbsp&nbsp</div>-->
+                    <!--<div class="entrust-price" ng-model="calc_profit">{{calcuCtrl.calc_profit + '(' + calcuCtrl.row.sell_vmrow.currency_name + ')'}}</div>-->
+                    <!--<div class="clearfix"></div>-->
+                    <!--</div>-->
+                    <div class="clear trade-row" style="width: 400px; text-align: center">
+                        <button type="button" class="btn btn-primary" style="margin-top: 10px" ng-disabled="!calcuCtrl.enableSave" ng-click="calcuCtrl.downloasAsCsv()">보    관</button>
+                        <button type="button" class="btn btn-warning" style="margin-top: 10px" ng-click="calcuCtrl.Calculate()">계    산</button>
+                        <button type="button" class="btn btn-success" style="margin-top: 10px" ng-click="calcuCtrl.onInit()">새로작성</button>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

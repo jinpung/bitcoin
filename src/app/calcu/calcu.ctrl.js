@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('inspinia').controller('CalcuCtrl', function (financeSvc, $interval, $filter, authSvc, $rootScope) {
+angular.module('inspinia').controller('CalcuCtrl', function (financeSvc, $interval, $filter, exportService , $scope) {
   'ngInject';
 
   var vm = this;
@@ -226,6 +226,7 @@ angular.module('inspinia').controller('CalcuCtrl', function (financeSvc, $interv
     return coinsum;
   };
 
+  vm.enableSave = false;
   vm.Calculate = function () {
     getExRate(vm.row.std_currency, vm.row.buy_vmrow.currency_name, vm.row.sell_vmrow.currency_name);
     vm.calc.calc_pay_money = 1 * vm.row.buy_budget * vm.row.buy_rate;
@@ -233,15 +234,65 @@ angular.module('inspinia').controller('CalcuCtrl', function (financeSvc, $interv
     vm.calc.calc_sell_money = 1 * vm.row.real_sell_budget * vm.row.sell_rate;
     vm.calc.calc_sell_coins = vm.row.sell_amount_sum;
     vm.calc.calc_profit = vm.calc.calc_sell_money - vm.calc.calc_pay_money;
+    vm.enableSave = true;
   };
 
-  vm.$onDestroy = function () {
-    console.log('destroy dashboard');
-    $interval.cancel(vm.appInterval);
-  };
+  $scope.$on("$destroy", function(){
+      $interval.cancel(vm.appInterval);
+  })
+
+  vm.downloasAsCsv = function () {
+
+      var ary = [];
+      console.log(vm.row.sell_vmrows)
+      var header = ['기준화페', '코인종류', '구입나라', '싸이트', '구입가격','구입개수', '구입금액', '구입료','이체료','실지구입개수','판매나라','싸이트'];
+      for(var i=0; i<vm.row.sell_vmrows.length;i++){
+          header = header.concat(['판매가격','판매개수','판매금액']);
+      }
+      header = header.concat(['판매수수료','실지판매금액','총구입개수','총지출금액','총판매개수','총판매금액','실제수익']);
+
+      var data = [
+          vm.row.std_currency,
+          vm.row.coin,
+          vm.row.buy_country,
+          vm.row.buy_site,
+          vm.row.buy_price,
+          vm.row.buy_amount,
+          vm.getBuyBudget(vm.row.buy_price, vm.row.buy_amount),
+          vm.getBuyFee(vm.row.buy_site, vm.row.coin, vm.row.buy_amount),
+          vm.getServiceFee(vm.row.buy_site, vm.row.coin, vm.row.buy_amount),
+          vm.getSellAmount(),
+          vm.row.sell_country,
+          vm.row.sell_site
+      ];
+      for(var i=0; i<vm.row.sell_vmrows.length;i++){
+          var sellrow = vm.row.sell_vmrows[i];
+          data.push(sellrow.sell_price);
+          data.push(sellrow.sell_amount)
+          data.push(sellrow.sell_price*sellrow.sell_amount)
+      }
+
+      data.push(vm.getSellFee(vm.row.sell_site, vm.row.coin, vm.row.sell_budget_sum));
+      data.push(vm.getRealSellBudget());
+
+      data.push(vm.calc.calc_purchase_coins);
+      data.push(vm.calc.calc_pay_money);
+
+      data.push(vm.calc.calc_purchase_coins);
+      data.push(vm.calc.calc_sell_money);
+
+      data.push(vm.calc.calc_profit );
+
+
+      ary.push(header);
+      ary.push(data);
+      console.log(ary);
+      exportService.downloadAsCsv(ary, '계산표.csv');
+  }
 
   function init() {
     // console.log('request init');
+    vm.enableSave = false;
     financeSvc.getVMRate().then(function (res) {
       vm.vmRate = res.data.results;
       financeSvc.getExchangeRate().then(function (res) {

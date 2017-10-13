@@ -1,5 +1,5 @@
 'use strict';
-angular.module('inspinia').factory('Util', function UtilService($window, $document) {
+angular.module('inspinia').factory('Util', function ($window, $document) {
   'ngInject';
 
   var Util = {

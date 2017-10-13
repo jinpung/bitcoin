@@ -1,6 +1,6 @@
 <div class="wrapper wrapper-content  animated fadeInRight dashboard">
   <div class="row">
-    <div ng-class="{'col-md-9':dashboardCtrl.showCalcu, 'col-md-12':!dashboardCtrl.showCalcu}">
+    <div ng-class="{'include-claculater-area':dashboardCtrl.showCalcu}" class="col-md-12">
       <div class="ibox">
         <div class="ibox-content">
           <ul class="nav nav-tabs">
@@ -272,7 +272,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3" ng-show="dashboardCtrl.showCalcu">
+    <div class="claculater-area" ng-show="dashboardCtrl.showCalcu">
       <div class="ibox">
         <div class="ibox-content">
            <div class="slide-animate" ng-include="'app/calcu/calcu.html'"></div>

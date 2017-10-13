@@ -1,0 +1,16 @@
+<div class="exchangerate-bar" ng-controller="exchangeRateCtrl as exchangeRateCtrl">
+	<span>화페시세:</span>
+
+	<span>기준화페</span>
+	<select class="form-control" ng-model="exchangeRateCtrl.currency" ng-change="exchangeRateCtrl.changeCurrency()">
+		<option value="KRW">KRW</option>
+		<option value="USD">USD</option>
+		<option value="CNY">CNY</option>
+		<option value="JPY">JPY</option>
+	</select>
+
+	<h5>KRW(<i class="fa fa-usd" aria-hidden="true"></i>):<span class="">{{exchangeRateCtrl.rate.KRW.rate}}</span></h5>
+	<h5>USD(<i class="fa fa-krw" aria-hidden="true"></i>):<span class="">{{exchangeRateCtrl.rate.USD.rate}}</span></h5>
+	<h5>CNY(<i class="fa fa-jpy" aria-hidden="true"></i>):<span class="">{{exchangeRateCtrl.rate.CNY.rate}}</span></h5>
+	<h5>JPY(<i class="fa fa-jpy" aria-hidden="true"></i>):<span class="">{{exchangeRateCtrl.rate.JPY.rate}}</span></h5>
+</div>

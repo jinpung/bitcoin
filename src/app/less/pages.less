@@ -1395,6 +1395,17 @@ body.body-small .vote-icon {
 
 /* Dashboard*/
 .dashboard{
+  position: relative;
+  .include-claculater-area{
+    padding-right: 480px;
+    min-height: 820px;
+  }
+  .claculater-area{
+    position: absolute;
+    right: 0px;
+    width: 455px;
+  }
+
   .todoapp {
     // max-width: 1200px;
     overflow-x: auto; // margin: auto;
@@ -1488,22 +1499,38 @@ body.body-small .vote-icon {
   }
 }
 
+
+.exchangerate-bar {
+  margin-top: 10px;
+  margin-left: 30px;
+  select{
+    display: inline;
+    width: 60px;
+    padding-left: 3px;
+    padding-right: 5px;
+  }
+  h5{
+    display: inline;
+    padding-left: 25px;
+  }
+}
+
 /**
  * Calculator
  */
 .calculator-container{
   padding-top: 0px;
   padding-bottom: 20px;
-  /*width: 420px;*/
+  width: 420px;
   margin: 0 auto;
   .trade-calcu{
     border: solid 1px #d9d9d9;
     input {
       height: 24px;
-      width: 100px;
+      width: 130px;
     }
     select {
-      width: 80px;
+      width: 100px;
       height: 24px;
       border-radius: 2px;
       background-color: #fdfdfd;
@@ -1584,7 +1611,7 @@ body.body-small .vote-icon {
     .top-trade {
       margin-right: 10px;
       margin-left: 10px;
-      /*width: 400px;*/
+      width: 400px;
       margin-top: 10px;
       height: 70px;
       border-bottom: solid 1px #d9d9d9;
@@ -1599,7 +1626,7 @@ body.body-small .vote-icon {
     .sell-trade {
       margin-right: 10px;
       margin-left: 10px;
-      /*width: 400px;*/
+      width: 400px;
       margin-top: 10px;
       height: 200px;
       border-bottom: solid 1px #d9d9d9;
@@ -1607,7 +1634,7 @@ body.body-small .vote-icon {
     .ten-nodeal {
       margin-top: 20px;
       margin-left: 20px;
-      width: 210px;
+      width: 400px;
     }
     .nodeal-operation-des{
       border-bottom: 1px;

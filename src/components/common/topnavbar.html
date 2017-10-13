@@ -4,7 +4,7 @@
             <span minimaliza-sidebar></span>
         </div>
         <div class="navbar-header">
-            <span exchangerate-bar>현재 환율시세</span>
+            <div ng-include="'app/dashboard/exchangerate-bar.html'" ng-show="main.isDahsboard"></div>
         </div>
         <ul class="nav navbar-top-links navbar-right">
             <li>

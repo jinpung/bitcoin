@@ -16,12 +16,15 @@ angular.module('inspinia')
         $scope.$on('user:login', function (event, data) {
             that.user = data.user;
         });
-        // $rootScope.$on('userLoggedIn', function(){
-        //   that.user = userAuth.getUser();
-        // });
-        
-        // if(userAuth.isLoggedIn()){
-        //   this.user = userAuth.getUser();
-        // }
 
+
+
+        that.isDahsboard = false;
+        $rootScope.$on('$stateChangeSuccess',function(event, toState, toParams, fromState, fromParams){
+            if(toState.name == "app.dashboard"){
+                that.isDahsboard = true;
+            }else{
+                that.isDahsboard = false;
+            }
+        })
     });
