@@ -27,6 +27,12 @@ angular.module('inspinia', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', '
         controller: 'ManageUsersCtrl as userCtrl',
         data: {pageTitle: 'Users registered'}
       })
+      .state('app.useredit', {
+          url: '/edituser?id',
+          templateUrl: 'app/users/edit.html',
+          controller: 'UserEditCtrl as userCtrl',
+          data: {pageTitle: 'Users registered'}
+      })
       .state('app.datas', {
         url: '/datas',
         templateUrl: 'app/datas/list.html',
@@ -61,14 +67,19 @@ angular.module('inspinia', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', '
         templateUrl: 'app/login/restricted.html',
         controller: 'LoginRestrictedCtrl'
       })
-    $urlRouterProvider.otherwise('/public/login');
+      .state('landing', {
+          url: '/',
+          templateUrl: 'app/landing/landing.html',
+          controller: 'LandingCtrl'
+      })
+    $urlRouterProvider.otherwise('/');
 
   })
 
   .run(function ($rootScope, authSvc, $location, $state) {
       $rootScope.$on('$stateChangeStart', function (ev, toState) {        
         //check login protected pages
-        if (toState.name.indexOf('public.') !== 0 && !sessionStorage.token) {
+        if ((toState.name.indexOf('public.') !== 0 && toState.name.indexOf('landing') !== 0 )&& !sessionStorage.token) {
           $state.go("public.login");
           ev.preventDefault();
           return;

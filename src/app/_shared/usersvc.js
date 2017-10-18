@@ -11,7 +11,7 @@ angular.module('inspinia').factory('userSvc', function($log, $http, URL, $cookie
       return $http.get(APIENDPOINT + 'api/auth/me');
     },
     getUserById: function (id) {
-      return $http.get(URL.auth + '/' + id);
+      return $http.get(APIENDPOINT + 'api/users/'+id);
     }
   };
   return User;

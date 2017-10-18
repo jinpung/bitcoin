@@ -1,13 +1,26 @@
 'use strict';
 
-angular.module('inspinia').controller('ManageUsersCtrl', function ($scope, $state, $timeout, authSvc, Util, baseSvc) {
+angular.module('inspinia').controller('ManageUsersCtrl', function ($scope, $state, $timeout, authSvc, Util, baseSvc, $filter, financeSvc) {
   'ngInject';
 
   var vm = this;
   vm.onInit = function () {
+    vm.siteArray = financeSvc.getSiteArray();
     authSvc.getProfiles().then(function (res) {
       console.log(res);
       vm.listData = res.data.results;
+      angular.forEach(vm.listData, function (row) {
+        row.sites = [];
+        if(row.use_site && row.use_site !== ''){
+            var ary = angular.fromJson(row.use_site);
+            for(var i=0; i<ary.length; i++){
+              var fAry = $filter("filter")(vm.siteArray, {id:ary[i]}, true);
+              if(fAry.length){
+                  row.sites.push(fAry[0].siteName);
+              }
+            }
+        }
+      })
     }).catch(function (res) {});
   };
 
@@ -72,6 +85,19 @@ angular.module('inspinia').controller('ManageUsersCtrl', function ($scope, $stat
     }).catch(function (err) {
       baseSvc.alert('Fail');
     });
+  }
+
+  vm.editUser = editUser;
+  function editUser(id) {
+      var profile = vm.listData.filter(function (x) {
+          return x.user.id === id;
+      });
+      if (profile[0].user.is_superuser) {
+          // baseSvc.alert('You can not edit Admin');
+          // return;
+      };
+      console.log(123123);
+      $state.go("app.useredit", {id:id})
   }
 
   vm.delIp = delIp;

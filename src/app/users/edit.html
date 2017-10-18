@@ -1,0 +1,101 @@
+| filter: $select.search
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2><strong>사용자정보편집</strong></h2>
+  </div>
+</div>
+</div>
+
+<div class="wrapper wrapper-content  animated fadeInRight">
+  <div class="row">
+    <div class="ibox col-lg-8 col-md-10 col-lg-offset-2 col-md-offset-1">
+
+      <div class="ibox-content">
+        <div class="tab-content">
+          <div class="tab-pane active">
+            <!--<div class="row m-b-lg col-md-12 text-center">-->
+            <!--<h2>Edit Personal Information</h2>-->
+            <!--</div>-->
+
+            <div class="client-detail">
+              <form role="form" name="proForm"  class="form-horizontal" ng-submit="userCtrl.submit()">
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">유저식별자</label>
+                  <div class="col-sm-8"><input type="text" class="form-control" ng-model="userCtrl.profile.user.username" readonly></div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">이름</label>
+                  <div class="col-sm-8"><input type="text" class="form-control" ng-model="userCtrl.profile.user.first_name" name="firstName" required=""></div>
+                </div>
+                <!--<div class="hr-line-dashed"></div>               -->
+                <!--<div class="form-group">-->
+                <!--<label class="col-sm-3 control-label">성</label>-->
+                <!--<div class="col-sm-8"><input type="text" class="form-control" ng-model="userCtrl.profile.user.last_name" name="lastName" required=""></div>-->
+                <!--</div> -->
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">생일</label>
+                  <div class="col-sm-8"><input type="date" class="form-control" ng-model="userCtrl.profile.birth_date" name="birthday" required=""></div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">연계전화</label>
+                  <div class="col-sm-8"><input type="text" class="form-control" ng-model="userCtrl.profile.phone" name="mobilePhone"></div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">이메일</label>
+                  <div class="col-sm-8"><input type="text" class="form-control" ng-model="userCtrl.profile.user.email" name="email"></div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">Ip주소</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" ng-model="userCtrl.profile.ip_address" name="email">
+                  </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">주소</label>
+                  <div class="col-sm-8"><input type="text" class="form-control" ng-model="userCtrl.profile.location" name="locatione"></div>
+                </div>
+
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">소개글</label>
+                  <div class="col-sm-8"><input type="text" class="form-control" ng-model="userCtrl.profile.bio" name="bio"></div>
+                </div>
+
+                <div class="hr-line-dashed"></div>
+
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">리용사이트</label>
+                  <div class="col-sm-8">
+                    <ui-select multiple ng-model="userCtrl.selectedSites" theme="bootstrap" class="width-full" title="Choose sites..." remove-selected="false">
+                      <ui-select-match placeholder="Choose sites...">{{$item.siteName}}</ui-select-match>
+                      <ui-select-choices repeat="item in userCtrl.siteArray| filter: $select.search" refresh-delay="1000">
+                        <div ng-bind-html="item.siteName"></div>
+                      </ui-select-choices>
+                    </ui-select>
+                  </div>
+                </div>
+
+                <div class="hr-line-dashed"></div>
+
+                <div class="text-center">
+                  <a ui-sref="app.users" class="btn btn-default">취소</a>
+                  <button class="btn btn-primary" type="submit"><strong> 보관 </strong></button>
+                </div>
+              </form>
+            </div><!-- client-detail -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

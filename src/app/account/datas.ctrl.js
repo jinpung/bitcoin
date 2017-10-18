@@ -12,6 +12,7 @@ angular.module('inspinia').controller('AccountCtrl', function(authSvc, Util, bas
     authSvc.getCurrentUser().then(function (res) {
       vm.currentUser = res.data;
       vm.user = vm.currentUser;
+      console.log(vm.user);
       var currentProfile = authSvc.getCurrentProfileSync();
       vm.profile = angular.fromJson(angular.toJson(currentProfile));
       if (vm.profile.birth_date !== null) {

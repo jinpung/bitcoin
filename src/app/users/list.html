@@ -25,12 +25,13 @@
                     <th>상태</th>
                     <th>이메일</th>
                     <th>사용기간</th>
+                    <th>싸이트</th>
                     <th>Ip주소</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr ng-repeat="(key, value) in userCtrl.listData| filter:userCtrl.searchName track by value.id"">
+                  <tr ng-repeat="(key, value) in userCtrl.listData| filter:userCtrl.searchName track by value.id">
                     <td>{{$index + 1}}</td>
                     <td>{{value.user.username}}</td>
                     <td>{{value.user.first_name}}</td>
@@ -48,12 +49,17 @@
 		                  <button class="btn btn-white btn-sm" ng-show="date && value.s!=true" ng-click="value.s=true;userCtrl.onDeadline(value, date)">보관</button>
 		                </div>
                     </td>
+                    <td style="max-width:300px;word-wrap: break-word;">
+                      <a ng-click="value.showsites=true" ng-hide="value.showsites==true">{{value.sites.length}}개</a>
+                      <span ng-show="value.showsites==true">{{value.sites}}<a ng-click="value.showsites=false">   <<<</a></span>
+                    </td>
                     <td>
                     	<span class="label label--mini background-color--primary" ng-click="userCtrl.delIp(value)">
                         <i class="fa fa-times" aria-hidden="true"></i>
                       </span>{{value.ip_address}}
                     </td>                    
-                    <td>                      
+                    <td>
+                      <button class="btn btn-white btn-sm" ng-click="userCtrl.editUser(value.user.id)"><i class="fa fa-edit"></i> 편집</button>
                       <button class="btn btn-white btn-sm" ng-click="userCtrl.delUser(value.user.id)"><i class="fa fa-trash"></i> 삭제</button>
                     </td>
                   </tr>

@@ -26,5 +26,11 @@ angular.module('inspinia')
             }else{
                 that.isDahsboard = false;
             }
+
+            if(toState.name == "landing"){
+                $scope.isLanding = true;
+            }else{
+                $scope.isLanding = false;
+            }
         })
     });
