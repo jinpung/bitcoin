@@ -15,4 +15,4 @@ angular.module('inspinia').factory('userSvc', function($log, $http, URL, $cookie
     }
   };
   return User;
-})
+});

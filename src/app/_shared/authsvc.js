@@ -295,4 +295,4 @@ angular.module('inspinia').factory('authSvc', function(_, $, URL, APIENDPOINT, $
     }
   };
   return Auth;
-})
+});

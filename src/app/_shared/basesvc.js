@@ -18,4 +18,4 @@ angular.module('inspinia').factory('baseSvc', function($rootScope) {
     }
   };
   return factory;
-})
+});

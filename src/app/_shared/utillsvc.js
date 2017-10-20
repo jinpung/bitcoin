@@ -77,4 +77,4 @@ angular.module('inspinia').factory('Util', function ($window, $document) {
   };
 
   return Util;
-})
+});
