@@ -56,7 +56,7 @@
                   <th rowspan="2">가상화폐</th>
                   <!--<th rowspan="2">상태</th>-->
                   <th colspan="2" style="text-align: center;border-bottom: 1px #dddddd solid;">현지시세</th>
-                  <th rowspan="2">적용환율</th>
+                  <!--<th rowspan="2">적용환율</th>-->
                   <th colspan="2" style="text-align: center;border-bottom: 1px #dddddd solid;">환산시세</th>
                   <th colspan="2" style="text-align: center;border-bottom: 1px #dddddd solid;">시세차</th>
                   <th colspan="2" style="text-align: center;border-bottom: 1px #dddddd solid;">수익률</th>
@@ -120,11 +120,11 @@
                         <span ng-if="value.currencyName == 'CNY'">CNY</span>
                     </li>
                   </td>
-                  <td>
-                      <span ng-if="value.exRate >= 1">{{value.exRate}}</span>
-                      <span ng-if="value.exRate < 1">1 / </span>
-                      <span ng-if="value.exRate < 1">{{value.originRate}}</span>
-                  </td>
+                  <!--<td>-->
+                      <!--<span ng-if="value.exRate >= 1">{{value.exRate}}</span>-->
+                      <!--<span ng-if="value.exRate < 1">1 / </span>-->
+                      <!--<span ng-if="value.exRate < 1">{{value.originRate}}</span>-->
+                  <!--</td>-->
                   <td>
                     <li ng-repeat="(key, vm) in value.data" style="list-style: none" ng-style="vm.noUpdate && {'text-decoration':'line-through' }">
                         {{vm.chVMRateBuy | number:3}}
@@ -181,7 +181,7 @@
                   <th rowspan="2">사이트</th>                  
                   <!--<th rowspan="2">상태</th>-->
                   <th colspan="2" style="text-align: center;border-bottom: 1px #dddddd solid;">현지시세</th>
-                  <th rowspan="2">적용환율</th>
+                  <!--<th rowspan="2">적용환율</th>-->
                   <th colspan="2" style="text-align: center;border-bottom: 1px #dddddd solid;">환산시세</th>
                   <th colspan="2" style="text-align: center;border-bottom: 1px #dddddd solid;">시세차</th>
                   <th colspan="2" style="text-align: center;border-bottom: 1px #dddddd solid;">수익률</th>
@@ -233,13 +233,13 @@
                       <span ng-if="value.currencyName == 'CNY'">CNY</span>
                     </span>
                   </td>
-                  <td>
-                    <span ng-if="value.dataObj[dashboardCtrl.tab].vmRateSell">
-                      <span ng-if="value.exRate >= 1">{{value.exRate}}</span>
-                      <span ng-if="value.exRate < 1">1 / </span>
-                      <span ng-if="value.exRate < 1">{{value.originRate}}</span>
-                    </span>
-                  </td>
+                  <!--<td>-->
+                    <!--<span ng-if="value.dataObj[dashboardCtrl.tab].vmRateSell">-->
+                      <!--<span ng-if="value.exRate >= 1">{{value.exRate}}</span>-->
+                      <!--<span ng-if="value.exRate < 1">1 / </span>-->
+                      <!--<span ng-if="value.exRate < 1">{{value.originRate}}</span>-->
+                    <!--</span>-->
+                  <!--</td>-->
                   <td style="text-align: right" ng-style="value.dataObj[dashboardCtrl.tab].noUpdate && {'text-decoration':'line-through' }">
                     {{value.dataObj[dashboardCtrl.tab].chVMRateBuy | number:3}}
                     <span style="opacity: 0">A</span>
