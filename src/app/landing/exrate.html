@@ -1,10 +1,10 @@
 <section id="features" class="container services" ng-controller="ExrateCtrl as exrateCtrl">
     <div class="row" ng-show="exrateCtrl.loaded">
         <div class="col-sm-3">
-            <h2>JUBI</h2>
+            <h2>POLONIEX</h2>
             <p>
                 <ul class="vmrate list-unstyled">
-                    <li ng-repeat="(key, item) in exrateCtrl.rate['JUBI'].vmData">
+                    <li ng-repeat="(key, item) in exrateCtrl.rate['POLONIEX'].vmData">
                         {{item.vm_name}}
                         <div>
                             <span ng-if="item.currency_name=='USD'"><i class="fa fa-krw" aria-hidden="true"></i></span>
@@ -15,7 +15,7 @@
                         </div>
                     </li>
                     <li>
-                        <a class="navy-link" ng-href="{{exrateCtrl.rate['JUBI'].siteURL}}" role="button" target="_blank">Details &raquo;</a>
+                        <a class="navy-link" ng-href="{{exrateCtrl.rate['POLONIEX'].siteURL}}" role="button" target="_blank">Details &raquo;</a>
                     </li>
                 </ul>
             </p>
