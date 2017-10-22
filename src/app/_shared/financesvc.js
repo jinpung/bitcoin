@@ -48,7 +48,7 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
       }, {
         number: 3,
         id: 3,
-        country: 'CHINA',
+        country: 'HONGKONG',
         currencyName: 'USD',
         siteName: 'GDAX',
         data: [],
@@ -88,7 +88,7 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
       }, {
         number: 8,
         id: 8,
-        country: 'CHINA',
+        country: 'HONGKONG',
         currencyName: 'CNY',
         siteName: 'OKCOIN',
         data: [],
