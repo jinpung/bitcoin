@@ -88,7 +88,7 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
       }, {
         number: 8,
         id: 8,
-        country: 'HONGKONG',
+        country: 'CHINA',
         currencyName: 'CNY',
         siteName: 'OKCOIN',
         data: [],
@@ -117,6 +117,22 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
         siteName: 'CPDAX',
         data: [],
         siteURL: 'https://www.cpdax.com/'
+      }, {
+        number: 12,
+        id: 12,
+        country: 'USA',
+        currencyName: 'USD',
+        siteName: 'BITSTAMP',
+        data: [],
+        siteURL: 'https://www.bitstamp.com/'
+      }, {
+        number: 13,
+        id: 13,
+        country: 'HONGKONG',
+        currencyName: 'USD',
+        siteName: 'OKCOIN_H',
+        data: [],
+        siteURL: 'https://www.okcoin.com/'
       }];
 
       return array;
