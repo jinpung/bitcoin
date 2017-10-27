@@ -60,6 +60,7 @@
                   <th colspan="2" style="text-align: center;border-bottom: 1px #dddddd solid;">환산시세</th>
                   <th colspan="2" style="text-align: center;border-bottom: 1px #dddddd solid;">시세차</th>
                   <th colspan="2" style="text-align: center;border-bottom: 1px #dddddd solid;">수익률</th>
+                    <th rowspan="2"></th>
                 </tr>
                 <tr>
                   <th>구입시세</th>
@@ -124,16 +125,9 @@
                 </tr>
 
                 <tr ng-repeat="(key, value) in dashboardCtrl.viewDataSet track by value.number" ng-show="dashboardCtrl.viewDataSet.length">
-                  <td style="text-align: center">
-                    <div style="font-size: 20px;font-weight: 700">
-                      <div ng-click="dashboardCtrl.changeOrder('up', value)" style="cursor: pointer;color: red">
-                        <i class="fa fa-arrow-up" aria-hidden="true"></i>
-                      </div>
+                  <td style="text-align: center; font-size: 14px; font-weight: 700">
+                      </br>
                       {{value.number}}
-                      <div ng-click="dashboardCtrl.changeOrder('down', value)" style="cursor: pointer;color: blue">
-                        <i class="fa fa-arrow-down" aria-hidden="true"></i>
-                      </div>
-                    </div>
                   </td>
                   <td>
                     <div><img style="display: block; margin: auto; width: 40px;margin-top: 10px" ng-src="assets/images/{{value.country}}.png"></div>
@@ -201,15 +195,25 @@
                           <span ng-if="vm.revRateSend">%</span>
                         </span>
                     </li>
-                  <td>
-                    <li ng-repeat="(key, vm) in value.data" style="list-style: none;" ng-style="vm.noUpdate && {'text-decoration':'line-through' }">
+                    <td>
+                        <li ng-repeat="(key, vm) in value.data" style="list-style: none;" ng-style="vm.noUpdate && {'text-decoration':'line-through' }">
                         <span class="blue" ng-class="{'red': vm.revRateSend > 0}" style="text-align: right">
                           {{vm.revRateRecv | number:3}}
                           <span style="opacity: 0">A</span>
                           <span ng-if="vm.revRateSend">%</span>
                         </span>
-                    </li>
-                  </td>
+                        </li>
+                    </td>
+                    <td>
+                        <div style="font-size: 20px;font-weight: 500">
+                            <div ng-click="dashboardCtrl.changeOrder('up', value)" style="cursor: pointer;color: red">
+                                <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                            </div>
+                            <div ng-click="dashboardCtrl.changeOrder('down', value)" style="cursor: pointer;color: blue">
+                                <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </td>
                 </tbody>
               </table>
             </div>
