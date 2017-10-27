@@ -133,6 +133,14 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
         siteName: 'OKCOIN_H',
         data: [],
         siteURL: 'https://www.okcoin.com/'
+      }, {
+        number: 14,
+        id: 14,
+        country: 'HONGKONG',
+        currencyName: 'USD',
+        siteName: 'BITTREX',
+        data: [],
+        siteURL: 'https://www.bittrex.com/'
       }];
 
       return array;
