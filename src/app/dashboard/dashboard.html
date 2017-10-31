@@ -48,7 +48,7 @@
 
           <div class="dashboard-list">
             <div class="table-responsive" ng-if="dashboardCtrl.tab == 'all'">
-              <table class="table table-striped table-bordered table-condensed">
+              <table class="vm-rate-all-view-table table table-striped table-bordered table-condensed">
                 <thead class="thead">
                 <tr>
                   <th rowspan="2">No</th>
@@ -117,7 +117,7 @@
                   <th>받기</th>
                 </tr>
                 </thead>
-                <tbody style="font-size: 12px">
+                <tbody style="font-size: 12px" ng-mouseleave="dashboardCtrl.selectRow=''">
                 <tr ng-hide="dashboardCtrl.viewDataSet.length">
                   <td colspan="13" class="text-center">
                     <h4><i class="fa fa-spinner fa-spin"></i> Loading.....<h4>
@@ -134,7 +134,7 @@
                     <div style="margin-top: 10px"><a style="display:block; text-align:center; font-size: 14px" ng-href="{{value.siteURL}}" target="_blank">{{value.siteName}}</a></div>
                   </td>
                   <td>
-                    <li ng-repeat="(key, vm) in value.data" style="list-style: none; color: blue">{{vm.vmName}}</li>
+                    <li ng-repeat="(key, vm) in value.data" style="list-style: none; color: blue" ng-class="{selected:dashboardCtrl.selectRow==(key+'_'+value.number)}" ng-mouseover="dashboardCtrl.selectRow=key+'_'+value.number">{{vm.vmName}}</li>
                   </td>
                   <!--<td>-->
                     <!--<li ng-repeat="(key, vm) in value.data" style="list-style: none">-->
@@ -143,7 +143,7 @@
                     <!--</li>-->
                   <!--</td>-->
                   <td>
-                    <li ng-repeat="(key, vm) in value.data" style="list-style: none" ng-style="vm.noUpdate && {'text-decoration':'line-through' }">
+                    <li ng-repeat="(key, vm) in value.data" style="list-style: none" ng-style="vm.noUpdate && {'text-decoration':'line-through' }" ng-class="{selected:dashboardCtrl.selectRow==(key+'_'+value.number)}" ng-mouseover="dashboardCtrl.selectRow=key+'_'+value.number">
                        <span ng-if="value.currencyName == 'JPY'">¥</span>
                         <span ng-if="value.currencyName == 'USD'">$</span>
                         <span ng-if="value.currencyName == 'KRW'">₩</span> {{vm.vmRateBuy}}
@@ -151,7 +151,7 @@
                     </li>
                   </td>
                   <td>
-                    <li ng-repeat="(key, vm) in value.data" style="list-style: none" ng-style="vm.noUpdate && {'text-decoration':'line-through' }">
+                    <li ng-repeat="(key, vm) in value.data" style="list-style: none" ng-style="vm.noUpdate && {'text-decoration':'line-through' }" ng-class="{selected:dashboardCtrl.selectRow==(key+'_'+value.number)}" ng-mouseover="dashboardCtrl.selectRow=key+'_'+value.number">
                        <span ng-if="value.currencyName == 'JPY'">¥</span>
                         <span ng-if="value.currencyName == 'USD'">$</span>
                         <span ng-if="value.currencyName == 'KRW'">₩</span> {{vm.vmRateSell}}
@@ -164,40 +164,40 @@
                       <!--<span ng-if="value.exRate < 1">{{value.originRate}}</span>-->
                   <!--</td>-->
                   <td>
-                    <li ng-repeat="(key, vm) in value.data" style="list-style: none" ng-style="vm.noUpdate && {'text-decoration':'line-through' }">
+                    <li ng-repeat="(key, vm) in value.data" style="list-style: none" ng-style="vm.noUpdate && {'text-decoration':'line-through' }" ng-class="{selected:dashboardCtrl.selectRow==(key+'_'+value.number)}" ng-mouseover="dashboardCtrl.selectRow=key+'_'+value.number">
                         {{vm.chVMRateBuy | number:3}}
                         <span style="opacity: 0">A</span>
                     </li>
                   </td>
                   <td>
-                    <li ng-repeat="(key, vm) in value.data" style="list-style: none" ng-style="vm.noUpdate && {'text-decoration':'line-through' }">
+                    <li ng-repeat="(key, vm) in value.data" style="list-style: none" ng-style="vm.noUpdate && {'text-decoration':'line-through' }" ng-class="{selected:dashboardCtrl.selectRow==(key+'_'+value.number)}" ng-mouseover="dashboardCtrl.selectRow=key+'_'+value.number">
                         {{vm.chVMRateSell | number:3}}
                         <span style="opacity: 0">A</span>
                     </li>
                   </td>
                   <td>
-                    <li ng-repeat="(key, vm) in value.data" style="list-style: none" ng-style="vm.noUpdate && {'text-decoration':'line-through' }">
+                    <li ng-repeat="(key, vm) in value.data" style="list-style: none" ng-style="vm.noUpdate && {'text-decoration':'line-through' }" ng-class="{selected:dashboardCtrl.selectRow==(key+'_'+value.number)}" ng-mouseover="dashboardCtrl.selectRow=key+'_'+value.number">
                         {{vm.realVMRateSend | number:3}}
                         <span style="opacity: 0">A</span>
                     </li>
                   </td>
                   <td>
-                    <li ng-repeat="(key, vm) in value.data" style="list-style: none" ng-style="vm.noUpdate && {'text-decoration':'line-through' }">
+                    <li ng-repeat="(key, vm) in value.data" style="list-style: none" ng-style="vm.noUpdate && {'text-decoration':'line-through' }" ng-class="{selected:dashboardCtrl.selectRow==(key+'_'+value.number)}" ng-mouseover="dashboardCtrl.selectRow=key+'_'+value.number">
                         {{vm.realVMRateRecv | number:3}}
                         <span style="opacity: 0">A</span>
                     </li>
                   </td>
                   <td>
-                    <li ng-repeat="(key, vm) in value.data" style="list-style: none" ng-style="vm.noUpdate && {'text-decoration':'line-through' }">
-                        <span class="blue" ng-class="{'red': vm.revRateSend > 0}" style="text-align: right">
+                    <li ng-repeat="(key, vm) in value.data" style="list-style: none" ng-style="vm.noUpdate && {'text-decoration':'line-through' }" ng-class="{selected:dashboardCtrl.selectRow==(key+'_'+value.number)}" ng-mouseover="dashboardCtrl.selectRow=key+'_'+value.number">
+                        <span class="blue" ng-class="{'red': vm.revRateSend < 0}" style="text-align: right">
                           {{vm.revRateSend | number:3}}
                           <span style="opacity: 0">A</span>
                           <span ng-if="vm.revRateSend">%</span>
                         </span>
                     </li>
                     <td>
-                        <li ng-repeat="(key, vm) in value.data" style="list-style: none;" ng-style="vm.noUpdate && {'text-decoration':'line-through' }">
-                        <span class="blue" ng-class="{'red': vm.revRateSend > 0}" style="text-align: right">
+                        <li ng-repeat="(key, vm) in value.data" style="list-style: none;" ng-style="vm.noUpdate && {'text-decoration':'line-through' }" ng-class="{selected:dashboardCtrl.selectRow==(key+'_'+value.number)}" ng-mouseover="dashboardCtrl.selectRow=key+'_'+value.number">
+                        <span class="blue" ng-class="{'red': vm.revRateRecv < 0}" style="text-align: right">
                           {{vm.revRateRecv | number:3}}
                           <span style="opacity: 0">A</span>
                           <span ng-if="vm.revRateSend">%</span>
@@ -348,11 +348,11 @@
                     {{value.dataObj[dashboardCtrl.tab].realVMRateRecv | number:3}}
                     <span style="opacity: 0">A</span>                                        
                   </td>
-                   <td style="text-align: right" class="blue" ng-class="{'red': value.dataObj[dashboardCtrl.tab].revRateSend > 0}" ng-style="value.dataObj[dashboardCtrl.tab].noUpdate && {'text-decoration':'line-through' }">
+                   <td style="text-align: right" class="blue" ng-class="{'red': value.dataObj[dashboardCtrl.tab].revRateSend < 0}" ng-style="value.dataObj[dashboardCtrl.tab].noUpdate && {'text-decoration':'line-through' }">
                     {{value.dataObj[dashboardCtrl.tab].revRateSend | number:3}}
                     <span style="opacity: 0">A</span>
                   </td>
-                  <td style="text-align: right" class="blue" ng-class="{'red': value.dataObj[dashboardCtrl.tab].revRateRecv > 0}" ng-style="value.dataObj[dashboardCtrl.tab].noUpdate && {'text-decoration':'line-through' }">
+                  <td style="text-align: right" class="blue" ng-class="{'red': value.dataObj[dashboardCtrl.tab].revRateRecv < 0}" ng-style="value.dataObj[dashboardCtrl.tab].noUpdate && {'text-decoration':'line-through' }">
                     {{value.dataObj[dashboardCtrl.tab].revRateRecv | number:3}}
                     <span style="opacity: 0">A</span>                    
                   </td>                  

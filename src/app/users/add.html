@@ -1,0 +1,40 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-4 ibox col-lg-offset-4 col-md-6 col-md-offset-3">
+      <div class="ibox float-e-margins">
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-sm-12"><h3 class="m-t-none m-b">유저추가</h3>
+              <div class="hr-line-dashed"></div>
+              <form name="proForm" role="form" ng-submit="userCtrl.save()">
+                <div class="form-group">
+                  <label>유저식별자</label>
+                  <input type="text" placeholder="User Name" class="form-control" ng-model="userCtrl.inputData.username" required="">
+                </div>
+
+                <div class="form-group">
+                  <label>새 비번</label>
+                  <input type="password" placeholder="New Password" class="form-control" ng-model="userCtrl.inputData.newPassword" required="">
+                </div>
+
+                <div class="form-group">
+                  <label>비번 확인</label>
+                  <input type="password" placeholder="Confirm Password" class="form-control" ng-model="userCtrl.inputData.newConfirmPassword" required="">
+                </div>
+
+                <div class="hr-line-dashed"></div>
+                <div>
+                  <button  style="margin-left: 10px;" class="btn btn-sm btn-primary pull-right m-t-n-xs" ng-disabled="proForm.$invalid || userCtrl.isSaving" type="submit"><strong>보관</strong></button>
+                  <a ui-sref="app.users" class="btn btn-default btn-sm pull-right m-t-n-xs">취소</a>
+
+                </div>
+
+              </form>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('inspinia', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource',
-  'ui.router', 'ui.bootstrap', 'firebase', 'ui.select'])
+  'ui.router', 'ui.bootstrap','ui.select'])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('app', {
@@ -33,6 +33,12 @@ angular.module('inspinia', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', '
           controller: 'UserEditCtrl as userCtrl',
           data: {pageTitle: 'Users registered'}
       })
+      .state('app.useradd', {
+        url: '/add-user',
+        templateUrl: 'app/users/add.html',
+        controller: 'UserAddCtrl as userCtrl',
+        data: {pageTitle: 'Users registered'}
+      })
       .state('app.datas', {
         url: '/datas',
         templateUrl: 'app/datas/list.html',
@@ -50,7 +56,25 @@ angular.module('inspinia', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', '
         templateUrl: 'app/professionals/list.html',
         controller: 'ManageProfessionalsCtrl as proCtrl',
         data: {pageTitle: 'Manage Professionals'}
-      })      
+      })
+      .state('app.groups', {
+          url: '/groups',
+          templateUrl: 'app/groups/list.html',
+          controller: 'ManageGroupsCtrl as groupCtrl',
+          data: {pageTitle: 'Group Manage'}
+      })
+      .state('app.group-edit', {
+        url: '/group-edit?id',
+        templateUrl: 'app/groups/edit.html',
+        controller: 'GroupsEditCtrl as groupCtrl',
+        data: {pageTitle: 'Group Manage'}
+      })
+
+
+
+
+
+
       .state('public', {
         abstract: true,
         url: '/public',
@@ -62,10 +86,15 @@ angular.module('inspinia', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', '
         controller: 'LoginCtrl',
         data: {pageTitle: 'Login', specialClass: 'gray-bg'}
       })
-      .state('public.restricted', {
-        url: '/restricted',
-        templateUrl: 'app/login/restricted.html',
-        controller: 'LoginRestrictedCtrl'
+      // .state('public.restricted', {
+      //   url: '/restricted',
+      //   templateUrl: 'app/login/restricted.html',
+      //   controller: 'LoginRestrictedCtrl'
+      // })
+      .state('public.singup', {
+          url: '/user-register/:groupname/:singup',
+          templateUrl: 'app/login/restricted.html',
+          controller: 'LoginRestrictedCtrl'
       })
       .state('landing', {
           url: '/',

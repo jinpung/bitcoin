@@ -7,14 +7,15 @@ angular.module('inspinia').controller('LoginRestrictedCtrl', function ($scope, $
       return;
     }
     if ($scope.signupEntity.password === $scope.signupEntity.confirmpassword) {
-		const signup = {
-		username: $scope.signupEntity.name,
-		password: $scope.signupEntity.password
-		};
+
+		var signup = {
+            username: $scope.signupEntity.name,
+            password: $scope.signupEntity.password,
+            groupname:$stateParams.groupname
+            };
 		authSvc.createUser(signup).then(function (res) {
 		  baseSvc.alert('Thank you for signing up.');
-      $state.go("public.login");
-
+          $state.go("public.login");
 		}).catch(function (res) {
 		  baseSvc.alert('create fail: ' + res.data.message + '');
 		});

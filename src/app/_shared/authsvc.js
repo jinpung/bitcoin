@@ -122,6 +122,9 @@ angular.module('inspinia').factory('authSvc', function(_, $, URL, APIENDPOINT, $
     createUser: function (user) {
       return $http.post(APIENDPOINT + 'api/auth/signup', user);
     },
+    addUser: function (user) {
+        return $http.post(APIENDPOINT + 'api/users/add', user);
+    },
     getUsers: function () {
       return $http.get(APIENDPOINT + 'api/users/');
     },
@@ -271,7 +274,7 @@ angular.module('inspinia').factory('authSvc', function(_, $, URL, APIENDPOINT, $
     },
     checkLast: function checkLast() {
       var checkLast = false;
-      if (typeof syncProfile.last_date == "undefined" || !syncProfile.last_date === null) {
+      if (typeof syncProfile.last_date == "undefined" || !syncProfile.last_date) {
         checkLast = true;
       } else {
         var lastDate = Util.dateToJs(syncProfile.last_date);

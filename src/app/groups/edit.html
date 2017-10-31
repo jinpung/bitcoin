@@ -1,0 +1,47 @@
+<div class="wrapper wrapper-content  animated fadeInRight">
+  <div class="row">
+    <div class="ibox col-lg-8 col-md-10 col-lg-offset-2 col-md-offset-1">
+
+      <div class="ibox-content">
+        <div class="tab-content">
+          <div class="tab-pane active">
+            <div class="client-detail">
+              <form role="form" name="proForm"  class="form-horizontal" ng-submit="groupCtrl.submit()">
+                <h3 class="text-center">
+                  <strong ng-hide="groupCtrl.row.id">Add Group</strong>
+                  <strong ng-show="groupCtrl.row.id">Edit Group</strong>
+                </h3>
+
+                <div class="hr-line-dashed"></div>
+
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">Group Name</label>
+                  <div class="col-sm-8"><input type="text" class="form-control" ng-model="groupCtrl.row.group_name" name="firstName" required=""></div>
+                </div>
+
+                <div class="hr-line-dashed"></div>
+
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">Group Admin</label>
+                  <div class="col-sm-8">
+                    <select class="form-control"  ng-model="groupCtrl.row.admin_id">
+                      <option ng-repeat="user in groupCtrl.users" value="{{user.id}}">{{user.username}}({{user.first_name}})</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="hr-line-dashed"></div>
+
+                <div class="text-center">
+                  <a ui-sref="app.groups" class="btn btn-default">취소</a>
+                  <button class="btn btn-primary" type="submit"><strong> 보관 </strong></button>
+                </div>
+              </form>
+            </div><!-- client-detail -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

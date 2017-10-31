@@ -19,6 +19,13 @@ angular.module('inspinia').controller('LoginCtrl', function loginCtrl($scope, $s
         $rootScope.$broadcast('user:login', res.data);
         if (authSvc.checkAvail()) {
           $state.go('app.dashboard');
+        }else{
+            if(!authSvc.checkIpSync()){
+                baseSvc.alert('Your Ip address is not allowed');
+            }
+            if(!authSvc.checkLast()){
+                baseSvc.alert('Your account was expired');
+            }
         }
       } else {
         baseSvc.alert('관리자의 승인을 받아야합니다.');

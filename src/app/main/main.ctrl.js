@@ -11,10 +11,12 @@ angular.module('inspinia')
         authSvc.getCurrentUser().then(function (res) {
           if (res.data && res.data.user) {
             that.user = res.data.user;
+            $rootScope.user = that.user;
           }          
         });
         $scope.$on('user:login', function (event, data) {
             that.user = data.user;
+            $rootScope.user = that.user;
         });
 
 

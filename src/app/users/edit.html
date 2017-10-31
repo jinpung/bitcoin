@@ -1,6 +1,3 @@
-| filter: $select.search
-
-
 <div class="row wrapper border-bottom white-bg page-heading">
   <div class="col-lg-10">
     <h2><strong>사용자정보편집</strong></h2>
@@ -31,6 +28,26 @@
                   <label class="col-sm-3 control-label">이름</label>
                   <div class="col-sm-8"><input type="text" class="form-control" ng-model="userCtrl.profile.user.first_name" name="firstName" required=""></div>
                 </div>
+
+                <div class="hr-line-dashed" ng-if="userCtrl.$rootScope.user.is_superuser"></div>
+                <div class="form-group" ng-if="userCtrl.$rootScope.user.is_superuser">
+                  <label class="col-sm-3 control-label">그룹관리자</label>
+                  <div class="col-sm-8"><input type="checkbox" class="" ng-model="userCtrl.profile.user.is_groupadmin" name="firstName"></div>
+                </div>
+
+
+                <div class="hr-line-dashed" ng-if="userCtrl.$rootScope.user.is_superuser"></div>
+
+                <div class="form-group" ng-if="userCtrl.$rootScope.user.is_superuser">
+                  <label class="col-sm-3 control-label">그룹</label>
+                  <div class="col-sm-8">
+                    <select class="form-control"  ng-model="userCtrl.profile.user.group_id">
+                      <option ng-repeat="group in userCtrl.groups" value="{{group.id}}">{{group.group_name}}</option>
+                    </select>
+                    <a ui-sref="app.groups">Manage Group</a>
+                  </div>
+                </div>
+
                 <!--<div class="hr-line-dashed"></div>               -->
                 <!--<div class="form-group">-->
                 <!--<label class="col-sm-3 control-label">성</label>-->

@@ -25,7 +25,7 @@
 
       <li>
         <a ui-sref="app.dashboard"><i class="fa fa-tachometer" aria-hidden="true"></i> <span class="nav-label">시세보기</span> </a>
-        <a ui-sref="app.users" ng-if="main.user.is_superuser"><i class="fa fa-users"></i> <span class="nav-label">유저목록</span> </a>
+        <a ui-sref="app.users" ng-if="main.user.is_superuser || main.user.is_groupadmin"><i class="fa fa-users"></i> <span class="nav-label">유저목록</span> </a>
         <a ui-sref="app.datas" ng-if="main.user.is_superuser"><i class="fa fa-list"></i> <span class="nav-label">비트코인관리</span> </a>
         <a ui-sref="app.account"><i class="fa fa-user"></i> <span class="nav-label">개인정보</span> </a>
       </li>      

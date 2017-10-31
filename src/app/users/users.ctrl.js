@@ -1,13 +1,19 @@
 'use strict';
 
-angular.module('inspinia').controller('ManageUsersCtrl', function ($scope, $state, $timeout, authSvc, Util, baseSvc, $filter, financeSvc) {
+angular.module('inspinia').controller('ManageUsersCtrl', function ($scope, $state, $timeout, authSvc, Util, baseSvc, $filter, financeSvc, groupSvc, $rootScope) {
   'ngInject';
 
   var vm = this;
+  vm.$rootScope = $rootScope;
+  vm.groups = [];
   vm.onInit = function () {
     vm.siteArray = financeSvc.getSiteArray();
+
+    groupSvc.get().then(function (res) {
+        vm.groups = res.data.groups;
+    }).catch(function (res) {});
+
     authSvc.getProfiles().then(function (res) {
-      console.log(res);
       vm.listData = res.data.results;
       angular.forEach(vm.listData, function (row) {
         row.sites = [];
@@ -25,6 +31,48 @@ angular.module('inspinia').controller('ManageUsersCtrl', function ($scope, $stat
   };
 
   vm.onInit();
+
+  vm.getURL = function (user) {
+      if(!user || typeof user.group_id == "undefined"){
+        return "";
+      }
+      var groupName = vm.getGroupName(user.group_id);
+      var host = window.location.host;
+      var protocal = window.location.protocol;
+      return protocal+"//"+host+"/#public/user-register/" + groupName + "/signup";
+  }
+
+  vm.getData = function (list) {
+      if(vm.$rootScope.user && vm.$rootScope.user.is_superuser){
+          return list;
+      }else if(vm.$rootScope.user && vm.$rootScope.user.is_groupadmin){
+          var groupId = vm.$rootScope.user.group_id;
+          var rows = [];
+          if(list && list.length){
+            list.forEach(function (row) {
+                if(row && row.user && row.user.group_id == groupId){
+                  rows.push(row)
+                }
+            })
+          }
+          return rows;
+      }else{
+          return [];
+      }
+  }
+
+
+  vm.getGroupName = function (groupId) {
+    if(!groupId){
+      return "";
+    }
+    var rows = $filter("filter")(vm.groups,{id:groupId}, true)
+    if(rows.length){
+      var row = rows[0];
+      return row.group_name;
+    }
+    return "";
+  }
 
   vm.onActive = onActive;
   function onActive(value) {
@@ -93,10 +141,9 @@ angular.module('inspinia').controller('ManageUsersCtrl', function ($scope, $stat
           return x.user.id === id;
       });
       if (profile[0].user.is_superuser) {
-          // baseSvc.alert('You can not edit Admin');
-          // return;
+          baseSvc.alert('You can not edit Supper Admin');
+          return;
       };
-      console.log(123123);
       $state.go("app.useredit", {id:id})
   }
 
@@ -105,7 +152,7 @@ angular.module('inspinia').controller('ManageUsersCtrl', function ($scope, $stat
     console.log('profile ip', value);
     var profile = angular.fromJson(angular.toJson(value));
     profile.user = profile.user.id;
-    profile.ip_address = null;
+    profile.ip_address = '';
     authSvc.putProfile(profile).then(function (res) {
       value.ip_address = null;
       baseSvc.alert('Success clearing ip!');
