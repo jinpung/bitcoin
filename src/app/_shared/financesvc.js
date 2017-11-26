@@ -193,7 +193,14 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
             sale: 0.2,
             transfer: 0.001,
             transfer_unit: '1'
+          },
+          XRP: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.1,
+            transfer_unit: '1'
           }
+
         },
         gdax: {
           BTC: {
@@ -322,6 +329,19 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
             transfer: 0.01,
             transfer_unit: '1'
           },
+          DASH: {
+            buy: 0.1,
+            sale: 0.1,
+            transfer: 0.001,
+            transfer_unit: '1'
+          },
+          ZEC: {
+            buy: 0.1,
+            sale: 0.1,
+            transfer: 0.001,
+            transfer_unit: '1'
+          }
+
         },
         okcoin_h: {
           BTC: {
@@ -397,7 +417,14 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
             sale: 0.15,
             transfer: 0.01,
             transfer_unit: '1'
+          },
+          BTG: {
+            buy: 0.25,
+            sale: 0.25,
+            transfer: 0.001,
+            transfer_unit: '1'
           }
+
         },
         korbit: {
           BTC: {
@@ -441,7 +468,14 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
             sale: 0,
             transfer: 0,
             transfer_unit: '1'
-          }
+          },
+          BTG: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 0.001,
+            transfer_unit: '1'
+          },
+
         },
         coinone: {
           BTC: {
@@ -541,7 +575,14 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
             sale: 0.2,
             transfer: 0.01,
             transfer_unit: '1'
-          }
+          },
+          BTG: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.001,
+            transfer_unit: '1'
+          },
+
         },
         poloniex: {
           BTC: {
@@ -718,6 +759,13 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
             transfer: 0.01,
             transfer_unit: '1'
           },
+          BTG: {
+            buy: 0.14,
+            sale: 0.14,
+            transfer: 0.001,
+            transfer_unit: '1'
+          },
+
         },
       };
       return array;
