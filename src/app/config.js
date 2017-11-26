@@ -42,5 +42,5 @@ angular.module('inspinia').factory('authInterceptor', function($rootScope, $q, $
     pre: 'http://27.255.76.26:8000/pre'
   })
   .constant('_', _)
-  .constant('$', $)
+  .constant('$', $);
 
