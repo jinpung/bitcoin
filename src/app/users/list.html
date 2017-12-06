@@ -3,10 +3,10 @@
     <h2>
       <strong>유저목록</strong>
       <a ui-sref="app.groups" class="btn btn-primary pull-right btn-sm btn-group-manage" ng-if="userCtrl.$rootScope.user.is_superuser">
-        <i class="fa fa-users"></i> Group Manage
+        <i class="fa fa-users"></i> 매장 관리
       </a>
       <a ui-sref="app.useradd" class="btn btn-success pull-right btn-sm btn-group-manage" >
-        <i class="fa fa-plus"></i> Add User
+        <i class="fa fa-plus"></i> 유저 추가
       </a>
     </h2>
     <h4 ng-if="!userCtrl.$rootScope.user.is_superuser">
@@ -36,8 +36,8 @@
                     <th>online</th>
                     <th>상태</th>
                     <th>이메일</th>
-                    <th ng-if="userCtrl.$rootScope.user.is_superuser">Group</th>
-                    <th ng-if="userCtrl.$rootScope.user.is_superuser">Role</th>
+                    <th ng-if="userCtrl.$rootScope.user.is_superuser">매장</th>
+                    <th ng-if="userCtrl.$rootScope.user.is_superuser">권한</th>
                     <th>사용기간</th>
                     <th>싸이트</th>
                     <th>Ip주소</th>
@@ -59,10 +59,10 @@
                     <td>{{value.user.email}}</td>
                     <td ng-if="userCtrl.$rootScope.user.is_superuser">{{userCtrl.getGroupName(value.user.group_id)}}</td>
                     <td ng-if="userCtrl.$rootScope.user.is_superuser">
-                      <span ng-show="value.user.is_superuser">Super Admin</span>
+                      <span ng-show="value.user.is_superuser">슈퍼관리자</span>
                       <span ng-show="!value.user.is_superuser">
-                        <span ng-show="value.user.is_groupadmin">Group Admin</span>
-                        <span ng-show="!value.user.is_groupadmin">Normal User</span>
+                        <span ng-show="value.user.is_groupadmin">매장관리자</span>
+                        <span ng-show="!value.user.is_groupadmin">일반유저</span>
                       </span>
                     </td>
                     <td>
