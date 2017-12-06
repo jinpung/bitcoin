@@ -97,7 +97,7 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
                 number: 9,
                 id: 9,
                 country: 'CHINA',
-                currencyName: 'CNY',
+                currencyName: 'USD',
                 siteName: 'HUOBI',
                 data: [],
                 siteURL: 'https://www.huobi.com/'
