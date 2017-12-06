@@ -3,10 +3,10 @@
     <h2>
       <strong>유저목록</strong>
       <a ui-sref="app.groups" class="btn btn-primary pull-right btn-sm btn-group-manage" ng-if="userCtrl.$rootScope.user.is_superuser">
-        <i class="fa fa-users"></i> 매장 관리
+        <i class="fa fa-users"></i> Group Manage
       </a>
       <a ui-sref="app.useradd" class="btn btn-success pull-right btn-sm btn-group-manage" >
-        <i class="fa fa-plus"></i> 유저 추가
+        <i class="fa fa-plus"></i> Add User
       </a>
     </h2>
     <h4 ng-if="!userCtrl.$rootScope.user.is_superuser">
@@ -33,10 +33,11 @@
                     <th>#</th>
                     <th>유저아이디</th>
                     <th>이름</th>
+                    <th>online</th>
                     <th>상태</th>
                     <th>이메일</th>
-                    <th ng-if="userCtrl.$rootScope.user.is_superuser">매장</th>
-                    <th ng-if="userCtrl.$rootScope.user.is_superuser">권한</th>
+                    <th ng-if="userCtrl.$rootScope.user.is_superuser">Group</th>
+                    <th ng-if="userCtrl.$rootScope.user.is_superuser">Role</th>
                     <th>사용기간</th>
                     <th>싸이트</th>
                     <th>Ip주소</th>
@@ -48,6 +49,7 @@
                     <td>{{$index + 1}}</td>
                     <td>{{value.user.username}}</td>
                     <td>{{value.user.first_name}}</td>
+                    <td><span style="font-size: 20px;" ng-style="{ color: userCtrl.checkOnline(value.user.username)? '#428bca' : 'rgb(234, 229, 229)' }"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></span>{{}}</td>
                     <td>
                     	<a ng-click="userCtrl.onActive(value)">
 	                    	<span ng-if="value.user.is_staff" class="label label--mini background-color--primary">가능</span>
@@ -57,10 +59,10 @@
                     <td>{{value.user.email}}</td>
                     <td ng-if="userCtrl.$rootScope.user.is_superuser">{{userCtrl.getGroupName(value.user.group_id)}}</td>
                     <td ng-if="userCtrl.$rootScope.user.is_superuser">
-                      <span ng-show="value.user.is_superuser">슈퍼관리자</span>
+                      <span ng-show="value.user.is_superuser">Super Admin</span>
                       <span ng-show="!value.user.is_superuser">
-                        <span ng-show="value.user.is_groupadmin">매장관리자</span>
-                        <span ng-show="!value.user.is_groupadmin">일반유저</span>
+                        <span ng-show="value.user.is_groupadmin">Group Admin</span>
+                        <span ng-show="!value.user.is_groupadmin">Normal User</span>
                       </span>
                     </td>
                     <td>
@@ -85,7 +87,7 @@
                     </td>
                   </tr>
                   <tr ng-show="(userCtrl.listData| filter:userCtrl.searchName).length === 0">
-                    <td colspan="10" class="text-center">등록된 유저가 없습니다.</td>
+                    <td colspan="11" class="text-center">등록된 유저가 없습니다.</td>
                   </tr>
                 </tbody>
               </table>

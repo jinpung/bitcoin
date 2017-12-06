@@ -1,0 +1,47 @@
+    <section id="policy" class="policy">
+    <div class="container">
+        <div class="row m-b-lg">
+            <div class="col-lg-12 text-center">
+                <div class="navy-line"></div>
+                <h1>공지사항</h1>
+            </div>
+        </div>
+        <div class="row" style="padding-bottom: 30px;">
+            <div ng-if="policies.length==0">There is no data to display</div>
+            <!--div class="about-container1" ng-if="policies.length==1">
+                <div class="row padding-10">
+                    <div class="col-md-offset-1 col-md-10 about-content">
+                        <div ng-bind-html="policies[0].content"></div>
+                    </div>
+                </div>
+            </div-->
+            <div ng-if="policies.length>0">
+                <div class="container about-container">
+                    <div class="row padding-10">
+                        <div class="col-md-offset-1 col-md-10">
+                            <div class="row">
+                                <div class="col-md-3 col-lg-2 padding-right-0">
+                                    <ul class="text-left">
+                                        <li class="padding-10 about-menu-item cursor-pointer"
+                                            ng-class="{'active':item.id==selectedItem.id}"
+                                            ng-repeat="item in policies">
+                                            <a ng-click="selectRow(item)" class="width-full display-inline-block" style="cursor: pointer;">
+                                                {{item.category}}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-9 col-lg-10 about-content">
+                                    <div class="padding-bottom-20 padding-10" style="padding-left: 15px;">
+                                        <ng-bind-html ng-bind-html="selectedItem.content">
+                                        </ng-bind-html>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

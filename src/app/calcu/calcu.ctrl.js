@@ -153,7 +153,7 @@ angular.module('inspinia').controller('CalcuCtrl', function (financeSvc, $interv
       if (feeType == "1") {
         serviceFee = fee;
       } else if (feeType == "1%") {
-        serviceFee = fee * amount * 0.01;
+        serviceFee = fee * amount * 0.01;;
       }
       vm.row.service_fee = serviceFee;
       return serviceFee;

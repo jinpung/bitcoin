@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('inspinia').controller('ManageUsersCtrl', function ($scope, $state, $timeout, authSvc, Util, baseSvc, $filter, financeSvc, groupSvc, $rootScope) {
+angular.module('inspinia').controller('ManageUsersCtrl', function ($scope, $state, $timeout, authSvc, Util, baseSvc, $filter, financeSvc, groupSvc, $rootScope, userstatusSvc) {
   'ngInject';
 
   var vm = this;
@@ -159,5 +159,14 @@ angular.module('inspinia').controller('ManageUsersCtrl', function ($scope, $stat
     }).catch(function (err) {
       baseSvc.alert('fai' + err.data);
     });
+  }
+
+  vm.checkOnline = function (username) {
+    var ary = $filter("filter")(userstatusSvc.currentUsers, {username:username}, true);
+    if(ary.length){
+        return true;
+    }else{
+        return false;
+    }
   }
 })

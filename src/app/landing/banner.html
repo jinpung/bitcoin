@@ -29,7 +29,7 @@
                 <div class="carousel-caption blank">
                     <h1>적은 돈으로 많은 돈을... <br/> 적은 시간에 많은 돈을...</h1>
                     <p>아껴진 돈과 시간으로 내 삶의 질을 더 향상...</p>
-                    <!--<p><a class="btn btn-lg btn-primary" href="index.html" role="button">신규가입</a></p>-->
+                    <p><a class="btn btn-lg btn-primary" href="index.html" role="button">신규가입</a></p>
                 </div>
             </div>
             <!-- Set background for slide in css -->
@@ -44,4 +44,14 @@
         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a>
+</div>
+<div ng-if="notifications.length">
+    <div class="row" style="padding-top: 50px;">
+        <div class="col-md-offset-1 col-md-10">
+            <div class="alert alert-success" role="alert" ng-repeat="row in notifications">
+                {{row.content}}
+                <a  ng-click="readNotifcation(row.id)" style="color:#544949;float: right;"><i class="fa fa-times"></i></a>
+            </div>
+        </div>
+    </div>
 </div>

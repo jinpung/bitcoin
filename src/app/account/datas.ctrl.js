@@ -37,7 +37,7 @@ angular.module('inspinia').controller('AccountCtrl', function(authSvc, Util, bas
   function submit() {
     console.log('submit', vm.profile);
     if (vm.profile.ip_address === '') {
-      vm.profile.ip_address = null;
+      vm.profile.ip_address = '';
     }
     var lprofile = angular.fromJson(angular.toJson(vm.profile));
     var user = lprofile.user;
@@ -47,6 +47,7 @@ angular.module('inspinia').controller('AccountCtrl', function(authSvc, Util, bas
       console.log('test', lprofile.birth_date);
       lprofile.birth_date = Util.dataToPy(lprofile.birth_date);
     }
+
     authSvc.putUser(user).then(function (res) {
       // console.log('user update success', res);
       authSvc.putProfile(lprofile).then(function (res) {

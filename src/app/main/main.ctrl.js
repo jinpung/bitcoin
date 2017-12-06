@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('inspinia')
-  .controller('MainCtrl', function ($scope, $rootScope, authSvc) {
+  .controller('MainCtrl', function ($scope, $rootScope, authSvc, userstatusSvc, $interval) {
         this.logout = function(){
           authSvc.logout();
         };
@@ -19,6 +19,16 @@ angular.module('inspinia')
             $rootScope.user = that.user;
         });
 
+        $interval(function () {
+            if(that.user){
+                if(that.user.is_superuser){
+                    userstatusSvc.update(0);
+                }else if(that.user.is_groupadmin){
+                    userstatusSvc.update(that.user.group_id);
+                }
+            }
+        }, 5000);
+
 
 
         that.isDahsboard = false;
@@ -27,6 +37,15 @@ angular.module('inspinia')
                 that.isDahsboard = true;
             }else{
                 that.isDahsboard = false;
+            }
+
+            if(toState.name == "app.users" || toState.name == "app.datas"  || toState.name == "app.groups"
+                || toState.name == "app.notifications" || toState.name == "app.policies"
+                || toState.name == "app.answers"||toState.name == "app.logs"
+                ){
+                that.showUserStatus = true;
+            }else{
+                that.showUserStatus = false;
             }
 
             if(toState.name == "landing"){

@@ -8,21 +8,21 @@
             <div class="client-detail">
               <form role="form" name="proForm"  class="form-horizontal" ng-submit="groupCtrl.submit()">
                 <h3 class="text-center">
-                  <strong ng-hide="groupCtrl.row.id">매장추가</strong>
-                  <strong ng-show="groupCtrl.row.id">매장편집</strong>
+                  <strong ng-hide="groupCtrl.row.id">Add Group</strong>
+                  <strong ng-show="groupCtrl.row.id">Edit Group</strong>
                 </h3>
 
                 <div class="hr-line-dashed"></div>
 
                 <div class="form-group">
-                  <label class="col-sm-3 control-label">매장 이름</label>
+                  <label class="col-sm-3 control-label">Group Name</label>
                   <div class="col-sm-8"><input type="text" class="form-control" ng-model="groupCtrl.row.group_name" name="firstName" required=""></div>
                 </div>
 
                 <div class="hr-line-dashed"></div>
 
                 <div class="form-group">
-                  <label class="col-sm-3 control-label">매장 관리자</label>
+                  <label class="col-sm-3 control-label">Group Admin</label>
                   <div class="col-sm-8">
                     <select class="form-control"  ng-model="groupCtrl.row.admin_id">
                       <option ng-repeat="user in groupCtrl.users" value="{{user.id}}">{{user.username}}({{user.first_name}})</option>

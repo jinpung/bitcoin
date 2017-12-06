@@ -1,0 +1,53 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="ibox col-lg-8 col-md-10 col-lg-offset-2 col-md-offset-1">
+
+      <div class="ibox-content">
+        <div class="tab-content">
+          <div class="tab-pane active">
+            <div class="row m-b-lg col-md-12 text-center">
+              <h2>About me</h2>
+            </div>
+
+            <div class="client-detail">
+              <form role="form" name="form"  class="form-horizontal" ng-submit="vm.save()">
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">Category *</label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control" ng-model="vm.info.category"  required>
+                  </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">order</label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control" ng-model="vm.info.order">
+                  </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">content</label>
+                  <div class="col-sm-7">
+                    <div ckeditor="options" ng-model="vm.info.content" ready="onReady()"></div>
+                    <!--textarea class="form-control" ng-model="vm.info.content" required rows="5"></textarea-->
+                  </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+
+
+                <div class="text-center">
+                  <a class="btn btn-default"  ui-sref="app.policies"><strong> Cancel </strong></a>
+                  <button class="btn btn-primary" type="submit" ng-disabled="form.$invalid"><strong> Save </strong></button>
+                </div>
+
+              </form>
+            </div><!-- client-detail -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

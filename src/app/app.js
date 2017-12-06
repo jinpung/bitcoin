@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('inspinia', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource',
-  'ui.router', 'ui.bootstrap','ui.select'])
+  'ui.router', 'ui.bootstrap','ui.select','ckeditor'])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('app', {
@@ -69,6 +69,63 @@ angular.module('inspinia', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', '
         controller: 'GroupsEditCtrl as groupCtrl',
         data: {pageTitle: 'Group Manage'}
       })
+      .state('app.notifications', {
+        url: '/notifications',
+        templateUrl: 'app/notification/list.html',
+        controller: 'NotificationListCtrl as vm',
+        data: {pageTitle: 'Notification Manage'}
+      })
+      .state('app.notification-edit', {
+        url: '/edit-notification?id',
+        templateUrl: 'app/notification/edit.html',
+        controller: 'NotificationEditCtrl as vm',
+        data: {pageTitle: 'Notification Edit'}
+      })
+
+      .state('app.policies', {
+        url: '/policies',
+        templateUrl: 'app/policies/list.html',
+        controller: 'PoliciyListCtrl as vm',
+        data: {pageTitle: 'Policy Manage'}
+      })
+      .state('app.policie-edit', {
+        url: '/edit-policy?id',
+        templateUrl: 'app/policies/edit.html',
+        controller: 'PoliicyEditCtrl as vm',
+        data: {pageTitle: 'Policy Edit'}
+      })
+
+      .state('app.questions', {
+          url: '/questions',
+          templateUrl: 'app/questions/list.html',
+          controller: 'QuestionsListCtrl as vm',
+          data: {pageTitle: 'Questions Manage'}
+      })
+      .state('app.question-edit', {
+          url: '/edit-questions?id',
+          templateUrl: 'app/questions/edit.html',
+          controller: 'QuestionEditCtrl as vm',
+          data: {pageTitle: 'Question Edit'}
+      })
+      .state('app.answers', {
+          url: '/answers',
+          templateUrl: 'app/answers/list.html',
+          controller: 'AnswersListCtrl as vm',
+          data: {pageTitle: 'Answers Manage'}
+      })
+      .state('app.answer-edit', {
+          url: '/edit-answer?id',
+          templateUrl: 'app/answers/edit.html',
+          controller: 'AnswerEditCtrl as vm',
+          data: {pageTitle: 'Answer Edit'}
+      })
+      .state('app.logs', {
+        url: '/logs',
+        templateUrl: 'app/logs/list.html',
+        controller: 'LogsListCtrl as vm',
+        data: {pageTitle: 'Access Log'}
+      })
+
 
 
 

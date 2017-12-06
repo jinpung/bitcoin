@@ -437,68 +437,68 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
               switch (vmName) {
                 case 'BTC':
                   vm.viewArray[siteIndex].data[vmIndex].realVMRate = stBTC - chVMRate;
-                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stBTCSell;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = stBTCSell - chVMRateBuy;
                   vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stBTCBuy - chVMRateSell;
                   break;
                 case 'ETH':
                   vm.viewArray[siteIndex].data[vmIndex].realVMRate = stETH - chVMRate;
-                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stETHSell;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = stETHSell - chVMRateBuy;
                   vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stETHBuy - chVMRateSell;
                   break;
                 case 'ETC':
                   vm.viewArray[siteIndex].data[vmIndex].realVMRate = stETC - chVMRate;
-                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stETCSell;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = stETCSell - chVMRateBuy;
                   vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stETCBuy - chVMRateSell;
                   break;
                 case 'LTC':
                   vm.viewArray[siteIndex].data[vmIndex].realVMRate = stLTC - chVMRate;
-                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stLTCSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = stLTCSell - chVMRateBuy;
                   vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stLTCBuy - chVMRateSell;
                   break;
                 case 'XRP':
                   vm.viewArray[siteIndex].data[vmIndex].realVMRate = stXRP - chVMRate;
-                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stXRPSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = stXRPSell - chVMRateBuy;
                   vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stXRPBuy - chVMRateSell;
                   break;
                 case 'DASH':
                   vm.viewArray[siteIndex].data[vmIndex].realVMRate = stDASH - chVMRate;
-                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stDASHSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = stDASHSell - chVMRateBuy;
                   vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stDASHBuy - chVMRateSell;
                   break;
 
                 case 'BCH':
                     vm.viewArray[siteIndex].data[vmIndex].realVMRate = stBCH - chVMRate;
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stBCHSell
+                    vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = stBCHSell - chVMRateBuy;
                     vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stBCHBuy - chVMRateSell;
                     break;
                 case 'XMR':
                     vm.viewArray[siteIndex].data[vmIndex].realVMRate = stXMR - chVMRate;
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stXMRSell
+                    vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = stXMRSell - chVMRateBuy;
                     vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stXMRBuy - chVMRateSell;
                     break;
                 case 'ZEC':
                     vm.viewArray[siteIndex].data[vmIndex].realVMRate = stZEC - chVMRate;
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stZECSell
+                    vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = stZECSell - chVMRateBuy;
                     vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stZECBuy - chVMRateSell;
                     break;
                 case 'QTUM':
                     vm.viewArray[siteIndex].data[vmIndex].realVMRate = stQTUM - chVMRate;
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stQTUMSell
+                    vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = stQTUMSell - chVMRateBuy;
                     vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stQTUMBuy - chVMRateSell;
                     break;
                 case 'BCC':
                     vm.viewArray[siteIndex].data[vmIndex].realVMRate = stBCC - chVMRate;
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stBCCSell
+                    vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = stBCCSell - chVMRateBuy;
                     vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stBCCBuy - chVMRateSell;
                     break;
                 case 'NEO':
                     vm.viewArray[siteIndex].data[vmIndex].realVMRate = stNEO - chVMRate;
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stNEOSell
+                    vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = stNEOSell - chVMRateBuy;
                     vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stNEOBuy - chVMRateSell;
                     break;
                 case 'OMG':
                     vm.viewArray[siteIndex].data[vmIndex].realVMRate = stOMG - chVMRate;
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stOMGSell
+                    vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = stOMGSell - chVMRateBuy;
                     vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stOMGBuy - chVMRateSell;
                     break;
                   default:
