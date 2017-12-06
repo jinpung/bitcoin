@@ -421,6 +421,12 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
                       stOMGBuy = valueBuy;
                       stOMGSell = valueSell;
                       break;
+                  case 'BTG':
+                      stBTG = value;
+                      stBTGBuy = valueBuy;
+                      stBTGSell = valueSell;
+                      break;
+                      
                 default:
                   break;
               }
@@ -501,6 +507,12 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
                     vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stOMGSell
                     vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stOMGBuy - chVMRateSell;
                     break;
+                 case 'BTG':
+                    vm.viewArray[siteIndex].data[vmIndex].realVMRate = stBTG - chVMRate;
+                    vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stBTGSell
+                    vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stBTGBuy - chVMRateSell;
+                    break;
+
                   default:
                   break;
               }
