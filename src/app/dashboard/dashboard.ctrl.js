@@ -276,6 +276,7 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
     var stBCC = void 0;
     var stNEO = void 0;
     var stOMG = void 0;
+    var stBTG = void 0;
 
 
     var stBTCBuy = void 0;
@@ -291,6 +292,7 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
     var stBCCBuy = void 0;
     var stNEOBuy = void 0;
     var stOMGBuy = void 0;
+    var stBTGBuy = void 0;
 
 
     var stBTCSell = void 0;
@@ -306,6 +308,7 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
     var stBCCSell = void 0;
     var stNEOSell = void 0;
     var stOMGSell = void 0;
+    var stBTGSell = void 0;
 
 
 
@@ -421,6 +424,12 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
                       stOMGBuy = valueBuy;
                       stOMGSell = valueSell;
                       break;
+                  case 'BTG':
+                      stBTG = value;
+                      stBTGBuy = valueBuy;
+                      stBTGSell = valueSell;
+                      break;
+
                 default:
                   break;
               }
@@ -501,6 +510,12 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
                     vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stOMGSell
                     vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stOMGBuy - chVMRateSell;
                     break;
+                case 'BTG':
+                    vm.viewArray[siteIndex].data[vmIndex].realVMRate = stBTG - chVMRate;
+                    vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stBTGSell
+                    vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stBTGBuy - chVMRateSell;
+                    break;
+
                   default:
                   break;
               }

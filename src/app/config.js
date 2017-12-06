@@ -30,7 +30,7 @@ angular.module('inspinia').factory('authInterceptor', function($rootScope, $q, $
 
   .constant('APIENDPOINT', 'http://47.95.238.1/')
 
-  // .constant('APIENDPOINT', 'http://localhost:8082/')
+  //.constant('APIENDPOINT', 'http://localhost:8082/')
   .constant('URL', {
     // bet: 'http://localhost:8000/bet/api',
     bet: 'http://27.255.76.26:8000/bet/api',
