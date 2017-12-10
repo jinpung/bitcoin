@@ -277,6 +277,8 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
     var stNEO = void 0;
     var stOMG = void 0;
     var stBTG = void 0;
+    var stEOS = void 0;
+    var stIOTA = void 0;
 
 
     var stBTCBuy = void 0;
@@ -293,6 +295,8 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
     var stNEOBuy = void 0;
     var stOMGBuy = void 0;
     var stBTGBuy = void 0;
+    var stEOSBuy = void 0;
+    var stIOTABuy = void 0;
 
 
     var stBTCSell = void 0;
@@ -309,6 +313,8 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
     var stNEOSell = void 0;
     var stOMGSell = void 0;
     var stBTGSell = void 0;
+    var stEOSSell = void 0;
+    var stIOTASell = void 0;
 
 
 
@@ -429,6 +435,16 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
                       stBTGBuy = valueBuy;
                       stBTGSell = valueSell;
                       break;
+                  case 'EOS':
+                      stEOS = value;
+                      stEOSBuy = valueBuy;
+                      stEOSSell = valueSell;
+                      break;
+                  case 'IOTA':
+                      stIOTA = value;
+                      stIOTABuy = valueBuy;
+                      stIOTASell = valueSell;
+                      break;
 
                 default:
                   break;
@@ -514,6 +530,16 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
                     vm.viewArray[siteIndex].data[vmIndex].realVMRate = stBTG - chVMRate;
                     vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stBTGSell
                     vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stBTGBuy - chVMRateSell;
+                    break;
+                case 'EOS':
+                    vm.viewArray[siteIndex].data[vmIndex].realVMRate = stEOS - chVMRate;
+                    vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stEOSSell
+                    vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stEOSBuy - chVMRateSell;
+                    break;
+                case 'IOTA':
+                    vm.viewArray[siteIndex].data[vmIndex].realVMRate = stIOTA - chVMRate;
+                    vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stIOTASell
+                    vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stIOTABuy - chVMRateSell;
                     break;
 
                   default:

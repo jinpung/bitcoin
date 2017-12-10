@@ -199,6 +199,24 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
             sale: 0.2,
             transfer: 0.1,
             transfer_unit: '1'
+          },
+          EOS: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.5,
+            transfer_unit: '1'
+          },
+          OMG: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.1,
+            transfer_unit: '1'
+          },
+          ZEC: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.001,
+            transfer_unit: '1'
           }
 
         },
@@ -339,6 +357,30 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
             buy: 0.1,
             sale: 0.1,
             transfer: 0.001,
+            transfer_unit: '1'
+          },
+          EOS: {
+            buy: 0.1,
+            sale: 0.1,
+            transfer: 0.5,
+            transfer_unit: '1'
+          },
+          OMG: {
+            buy: 0.1,
+            sale: 0.1,
+            transfer: 0.1,
+            transfer_unit: '1'
+          },
+          IOTA: {
+            buy: 0.1,
+            sale: 0.1,
+            transfer: 0.5,
+            transfer_unit: '1'
+          },
+          NEO: {
+            buy: 0.1,
+            sale: 0.1,
+            transfer: 0.025,
             transfer_unit: '1'
           }
 
@@ -580,6 +622,24 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
             buy: 0.2,
             sale: 0.2,
             transfer: 0.001,
+            transfer_unit: '1'
+          },
+          EOS: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.1,
+            transfer_unit: '1'
+          },
+          OMG: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.1,
+            transfer_unit: '1'
+          },
+          NEO: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.01,
             transfer_unit: '1'
           },
 
