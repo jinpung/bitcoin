@@ -217,8 +217,25 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
             sale: 0.2,
             transfer: 0.001,
             transfer_unit: '1'
+          },
+          TRX: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.001,
+            transfer_unit: '1'
+          },
+          VEN: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.001,
+            transfer_unit: '1'
+          },
+          ELF: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.001,
+            transfer_unit: '1'
           }
-
         },
         gdax: {
           BTC: {
@@ -382,6 +399,48 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
             sale: 0.1,
             transfer: 0.025,
             transfer_unit: '1'
+          },
+          ELF: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.025,
+            transfer_unit: '1'
+          },
+          ICX: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.025,
+            transfer_unit: '1'
+          },
+          KNC: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.025,
+            transfer_unit: '1'
+          },
+          MCO: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.025,
+            transfer_unit: '1'
+          },
+          MITH: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.025,
+            transfer_unit: '1'
+          },
+          TRX: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.025,
+            transfer_unit: '1'
+          },
+          XMR: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.025,
+            transfer_unit: '1'
           }
 
         },
@@ -465,8 +524,55 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
             sale: 0.25,
             transfer: 0.001,
             transfer_unit: '1'
+          },
+          ICX: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.001,
+            transfer_unit: '1'
+          },
+          VEN: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.001,
+            transfer_unit: '1'
+          },
+          TRX: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.001,
+            transfer_unit: '1'
+          },
+          ELF: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.001,
+            transfer_unit: '1'
+          },
+          MITH: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.001,
+            transfer_unit: '1'
+          },
+          MCO: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.001,
+            transfer_unit: '1'
+          },
+          OMG: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.001,
+            transfer_unit: '1'
+          },
+          KNC: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.001,
+            transfer_unit: '1'
           }
-
         },
         korbit: {
           BTC: {
@@ -476,8 +582,8 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
             transfer_unit: '1'
           },
           LTC: {
-            buy: 0,
-            sale: 0,
+            buy: 0.2,
+            sale: 0.2,
             transfer: 0,
             transfer_unit: '1'
           },
@@ -516,8 +622,7 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
             sale: 0.15,
             transfer: 0.001,
             transfer_unit: '1'
-          },
-
+          }
         },
         coinone: {
           BTC: {
@@ -566,6 +671,18 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
             buy: 0,
             sale: 0,
             transfer: 0,
+            transfer_unit: '1'
+          },
+          OMG: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.01,
+            transfer_unit: '1'
+          },
+          EOS: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.01,
             transfer_unit: '1'
           }
         },
@@ -642,7 +759,18 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
             transfer: 0.01,
             transfer_unit: '1'
           },
-
+          ELF: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.1,
+            transfer_unit: '1'
+          },
+          TRX: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.01,
+            transfer_unit: '1'
+          }
         },
         poloniex: {
           BTC: {
