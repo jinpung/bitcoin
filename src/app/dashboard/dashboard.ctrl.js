@@ -42,11 +42,11 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
 
   $scope.$on("$destroy", function(){
     $interval.cancel(vm.appInterval);
-  })  
+  })
 
   vm.getVmRow = function(data, key){
     for(var i=0;i<data.length;i++){
-      if(data[i]['vmName'] == key){        
+      if(data[i]['vmName'] == key){
         return data[i];
       }
     }
@@ -279,6 +279,28 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
     var stBTG = void 0;
     var stEOS = void 0;
     var stIOTA = void 0;
+    var stICX = void 0;
+    var stVEN = void 0;
+    var stTRX = void 0;
+    var stELF = void 0;
+    var stMITH = void 0;
+    var stMCO = void 0;
+    var stKNC = void 0;
+    var stHSR = void 0;
+    var stGNT = void 0;
+    var stZIL = void 0;
+    var stETHOS = void 0;
+    var stPAY = void 0;
+    var stWAX = void 0;
+    var stPOWR = void 0;
+    var stLRC = void 0;
+    var stGTO = void 0;
+    var stSTEEM = void 0;
+    var stSTRAT = void 0;
+    var stMIT = void 0;
+
+
+
 
 
     var stBTCBuy = void 0;
@@ -297,6 +319,25 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
     var stBTGBuy = void 0;
     var stEOSBuy = void 0;
     var stIOTABuy = void 0;
+    var stICXBuy = void 0;
+    var stVENBuy = void 0;
+    var stTRXBuy = void 0;
+    var stELFBuy = void 0;
+    var stMITHBuy = void 0;
+    var stMCOBuy = void 0;
+    var stKNCBuy = void 0;
+    var stHSRBuy = void 0;
+    var stGNTBuy = void 0;
+    var stZILBuy = void 0;
+    var stETHOSBuy = void 0;
+    var stPAYBuy = void 0;
+    var stWAXBuy = void 0;
+    var stPOWRBuy = void 0;
+    var stLRCBuy = void 0;
+    var stGTOBuy = void 0;
+    var stSTEEMBuy = void 0;
+    var stSTRATBuy = void 0;
+    var stMITBuy = void 0;
 
 
     var stBTCSell = void 0;
@@ -315,6 +356,25 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
     var stBTGSell = void 0;
     var stEOSSell = void 0;
     var stIOTASell = void 0;
+    var stICXSell = void 0;
+    var stVENSell = void 0;
+    var stTRXSell = void 0;
+    var stELFSell = void 0;
+    var stMITHSell = void 0;
+    var stMCOSell = void 0;
+    var stKNCSell = void 0;
+    var stHSRSell = void 0;
+    var stGNTSell = void 0;
+    var stZILSell = void 0;
+    var stETHOSSell = void 0;
+    var stPAYSell = void 0;
+    var stWAXSell = void 0;
+    var stPOWRSell = void 0;
+    var stLRCSell = void 0;
+    var stGTOSell = void 0;
+    var stSTEEMSell = void 0;
+    var stSTRATSell = void 0;
+    var stMITSell = void 0;
 
 
 
@@ -445,6 +505,101 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
                       stIOTABuy = valueBuy;
                       stIOTASell = valueSell;
                       break;
+                case 'ICX':
+                  stICX = value;
+                  stICXBuy = valueBuy;
+                  stICXSell = valueSell;
+                  break;
+                case 'VEN':
+                  stVEN = value;
+                  stVENBuy = valueBuy;
+                  stVENSell = valueSell;
+                  break;
+                case 'TRX':
+                  stTRX = value;
+                  stTRXBuy = valueBuy;
+                  stTRXSell = valueSell;
+                  break;
+                case 'ELF':
+                  stELF = value;
+                  stELFBuy = valueBuy;
+                  stELFSell = valueSell;
+                  break;
+                case 'MITH':
+                  stMITH = value;
+                  stMITHBuy = valueBuy;
+                  stMITHSell = valueSell;
+                  break;
+                case 'MCO':
+                  stMCO = value;
+                  stMCOBuy = valueBuy;
+                  stMCOSell = valueSell;
+                  break;
+                case 'KNC':
+                  stKNC = value;
+                  stKNCBuy = valueBuy;
+                  stKNCSell = valueSell;
+                  break;
+                case 'HSR':
+                  stHSR = value;
+                  stHSRBuy = valueBuy;
+                  stHSRSell = valueSell;
+                  break;
+                case 'GNT':
+                  stGNT = value;
+                  stGNTBuy = valueBuy;
+                  stGNTSell = valueSell;
+                  break;
+                case 'ZIL':
+                  stZIL = value;
+                  stZILBuy = valueBuy;
+                  stZILSell = valueSell;
+                  break;
+                case 'ETHOS':
+                  stETHOS = value;
+                  stETHOSBuy = valueBuy;
+                  stETHOSSell = valueSell;
+                  break;
+                case 'PAY':
+                  stPAY = value;
+                  stPAYBuy = valueBuy;
+                  stPAYSell = valueSell;
+                  break;
+                case 'WAX':
+                  stWAX = value;
+                  stWAXBuy = valueBuy;
+                  stWAXSell = valueSell;
+                  break;
+                case 'POWR':
+                  stPOWR = value;
+                  stPOWRBuy = valueBuy;
+                  stPOWRSell = valueSell;
+                  break;
+                case 'LRC':
+                  stLRC = value;
+                  stLRCBuy = valueBuy;
+                  stLRCSell = valueSell;
+                  break;
+                case 'GTO':
+                  stGTO = value;
+                  stGTOBuy = valueBuy;
+                  stGTOSell = valueSell;
+                  break;
+                case 'STEEM':
+                  stSTEEM = value;
+                  stSTEEMBuy = valueBuy;
+                  stSTEEMSell = valueSell;
+                  break;
+                case 'STRAT':
+                  stSTRAT = value;
+                  stSTRATBuy = valueBuy;
+                  stSTRATSell = valueSell;
+                  break;
+                case 'MIT':
+                  stMIT = value;
+                  stMITBuy = valueBuy;
+                  stMITSell = valueSell;
+                  break;
 
                 default:
                   break;
@@ -541,8 +696,102 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
                     vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stIOTASell
                     vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stIOTABuy - chVMRateSell;
                     break;
-
-                  default:
+                case 'ICX':
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRate = stICX - chVMRate;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stICXSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stICXBuy - chVMRateSell;
+                  break;
+                case 'VEN':
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRate = stVEN - chVMRate;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stVENSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stVENBuy - chVMRateSell;
+                  break;
+                case 'TRX':
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRate = stTRX - chVMRate;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stTRXSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stTRXBuy - chVMRateSell;
+                  break;
+                case 'ELF':
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRate = stELF - chVMRate;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stELFSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stELFBuy - chVMRateSell;
+                  break;
+                case 'MITH':
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRate = stMITH - chVMRate;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stMITHSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stMITHBuy - chVMRateSell;
+                  break;
+                case 'MCO':
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRate = stMCO - chVMRate;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stMCOSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stMCOBuy - chVMRateSell;
+                  break;
+                case 'KNC':
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRate = stKNC - chVMRate;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stKNCSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stKNCBuy - chVMRateSell;
+                  break;
+                case 'HSR':
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRate = stHSR - chVMRate;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stHSRSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stHSRBuy - chVMRateSell;
+                  break;
+                case 'GNT':
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRate = stGNT - chVMRate;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stGNTSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stGNTBuy - chVMRateSell;
+                  break;
+                case 'ZIL':
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRate = stZIL - chVMRate;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stZILSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stZILBuy - chVMRateSell;
+                  break;
+                case 'ETHOS':
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRate = stETHOS - chVMRate;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stETHOSSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stETHOSBuy - chVMRateSell;
+                  break;
+                case 'PAY':
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRate = stPAY - chVMRate;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stPAYSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stPAYBuy - chVMRateSell;
+                  break;
+                case 'WAX':
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRate = stWAX - chVMRate;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stWAXSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stWAXBuy - chVMRateSell;
+                  break;
+                case 'POWR':
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRate = stPOWR - chVMRate;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stPOWRSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stPOWRBuy - chVMRateSell;
+                  break;
+                case 'LRC':
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRate = stLRC - chVMRate;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stLRCSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stLRCBuy - chVMRateSell;
+                  break;
+                case 'GTO':
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRate = stGTO - chVMRate;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stGTOSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stGTOBuy - chVMRateSell;
+                  break;
+                case 'STEEM':
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRate = stSTEEM - chVMRate;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stSTEEMSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stSTEEMBuy - chVMRateSell;
+                  break;
+                case 'STRAT':
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRate = stSTRAT - chVMRate;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stSTRATSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stSTRATBuy - chVMRateSell;
+                  break;
+                case 'MIT':
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRate = stMIT - chVMRate;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stMITSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stMITBuy - chVMRateSell;
+                  break;
+                default:
                   break;
               }
               var realVMRate = vm.viewArray[siteIndex].data[vmIndex].realVMRate;

@@ -149,6 +149,14 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
         siteName: 'UPBIT',
         data: [],
         siteURL: 'https://www.upbit.com/'
+      },{
+        number: 16,
+        id: 16,
+        country: 'KOREA',
+        currencyName: 'USD',
+        siteName: 'BINANCE',
+        data: [],
+        siteURL: 'https://www.binance.com/'
       }];
 
       return array;
@@ -234,6 +242,42 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
             buy: 0.2,
             sale: 0.2,
             transfer: 0.001,
+            transfer_unit: '1'
+          },
+          HSR: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.2,
+            transfer_unit: '1'
+          },
+          IOTA: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.5,
+            transfer_unit: '1'
+          },
+          GNT: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 5,
+            transfer_unit: '1'
+          },
+          ZIL: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 100,
+            transfer_unit: '1'
+          },
+          STEEM: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 0.5,
+            transfer_unit: '1'
+          },
+          NEO: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 0.01,
             transfer_unit: '1'
           }
         },
@@ -441,6 +485,42 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
             sale: 0.2,
             transfer: 0.025,
             transfer_unit: '1'
+          },
+          HSR: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.2,
+            transfer_unit: '1'
+          },
+          GNT: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 5,
+            transfer_unit: '1'
+          },
+          ZIL: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 20,
+            transfer_unit: '1'
+          },
+          PAY: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 0.5,
+            transfer_unit: '1'
+          },
+          LRC: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 7,
+            transfer_unit: '1'
+          },
+          GTO: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 10,
+            transfer_unit: '1'
           }
 
         },
@@ -572,6 +652,72 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
             sale: 0.2,
             transfer: 0.001,
             transfer_unit: '1'
+          },
+          HSR: {
+            buy: 0.2,
+            sale: 0.2,
+            transfer: 0.2,
+            transfer_unit: '1'
+          },
+          GNT: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 12,
+            transfer_unit: '1'
+          },
+          ZIL: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 30,
+            transfer_unit: '1'
+          },
+          ETHOS: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 30,
+            transfer_unit: '1'
+          },
+          PAY: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 2.4,
+            transfer_unit: '1'
+          },
+          WAX: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 5,
+            transfer_unit: '1'
+          },
+          POWR: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 5,
+            transfer_unit: '1'
+          },
+          LRC: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 10,
+            transfer_unit: '1'
+          },
+          GTO: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 15,
+            transfer_unit: '1'
+          },
+          STEEM: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 0.01,
+            transfer_unit: '1'
+          },
+          STRAT: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 0.2,
+            transfer_unit: '1'
           }
         },
         korbit: {
@@ -621,6 +767,12 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
             buy: 0.15,
             sale: 0.15,
             transfer: 0.001,
+            transfer_unit: '1'
+          },
+          ZIL: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 30,
             transfer_unit: '1'
           }
         },
@@ -769,6 +921,36 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
             buy: 0.2,
             sale: 0.2,
             transfer: 0.01,
+            transfer_unit: '1'
+          },
+          GNT: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 3.49,
+            transfer_unit: '1'
+          },
+          WAX: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 10.16,
+            transfer_unit: '1'
+          },
+          LRC: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 3.12,
+            transfer_unit: '1'
+          },
+          KNC: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 1.28,
+            transfer_unit: '1'
+          },
+          MIT: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 2.46,
             transfer_unit: '1'
           }
         },
@@ -955,6 +1137,110 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
           },
 
         },
+        binance: {
+          BTC: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 0.0005,
+            transfer_unit: '1'
+          },
+          ETH: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 0.01,
+            transfer_unit: '1'
+          },
+          EOS: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 0.3,
+            transfer_unit: '1'
+          },
+          BNB: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 0.3,
+            transfer_unit: '1'
+          },
+          TRX: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 70,
+            transfer_unit: '1'
+          },
+          ADA: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 1,
+            transfer_unit: '1'
+          },
+          LTC: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 0.01,
+            transfer_unit: '1'
+          },
+          BCC: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 0.001,
+            transfer_unit: '1'
+          },
+          XRP: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 0.25,
+            transfer_unit: '1'
+          },
+          ONT: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 0.1,
+            transfer_unit: '1'
+          },
+          ICX: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 1.5,
+            transfer_unit: '1'
+          },
+          IOTA: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 0.5,
+            transfer_unit: '1'
+          },
+          ETC: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 0.01,
+            transfer_unit: '1'
+          },
+          TUSD: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 2.9,
+            transfer_unit: '1'
+          },
+          NEO: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 0.01,
+            transfer_unit: '1'
+          },
+          XLM: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 0.01,
+            transfer_unit: '1'
+          },
+          QTUM: {
+            buy: 0.15,
+            sale: 0.15,
+            transfer: 0.01,
+            transfer_unit: '1'
+          }
+        }
       };
       return array;
     },

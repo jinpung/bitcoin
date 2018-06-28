@@ -26,7 +26,7 @@ angular.module('inspinia').controller('UserEditCtrl', function(authSvc,$statePar
             if (vm.profile.use_site && vm.profile.use_site !== '') {
                 vm.use_sites = angular.fromJson(vm.profile.use_site);
             }else{
-                vm.use_sites = [1,2,3,4,5,6,7,8,9,10];
+                vm.use_sites = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
             }
 
             if(vm.use_sites.length){

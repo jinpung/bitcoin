@@ -125,12 +125,12 @@ angular.module('inspinia', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', '
         controller: 'LogsListCtrl as vm',
         data: {pageTitle: 'Access Log'}
       })
-
-
-
-
-
-
+      .state('app.chart', {
+        url: '/chart',
+        templateUrl: 'app/chart/chart.html',
+        controller: 'ChartCtrl as vm',
+        data: {pageTitle: 'Chart'}
+      })
 
       .state('public', {
         abstract: true,

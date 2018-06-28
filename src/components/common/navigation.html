@@ -14,7 +14,7 @@
               </span>
               <span class="text-muted text-xs block">
                 <span ng-show="main.user.email">({{main.user.email}})</span>
-              </span>          
+              </span>
             </span>
           </a>
         </div>
@@ -25,6 +25,7 @@
 
       <li>
         <a ui-sref="app.dashboard"><i class="fa fa-tachometer" aria-hidden="true"></i> <span class="nav-label">시세보기</span> </a>
+        <!--a ui-sref="app.chart"><i class="fa fa-bar-chart" aria-hidden="true"></i> <span class="nav-label">시세그라프</span> </a-->
         <a ui-sref="app.questions"><i class="fa fa-question-circle" aria-hidden="true"></i> <span class="nav-label">일대일문의</span> </a>
         <a ui-sref="app.users" ng-if="main.user.is_superuser || main.user.is_groupadmin"><i class="fa fa-users"></i> <span class="nav-label">유저목록</span> </a>
         <a ui-sref="app.datas" ng-if="main.user.is_superuser"><i class="fa fa-list"></i> <span class="nav-label">비트코인관리</span> </a>
@@ -33,7 +34,7 @@
         <a ui-sref="app.answers" ng-if="main.user.is_superuser"><i class="fa fa-question-circle" aria-hidden="true"></i> <span class="nav-label">일대일문의 답변</span> </a>
         <a ui-sref="app.logs" ng-if="main.user.is_superuser || main.user.is_groupadmin"><i class="fa fa-history" aria-hidden="true"></i> <span class="nav-label">접속리력</span> </a>
         <a ui-sref="app.account"><i class="fa fa-user"></i> <span class="nav-label">개인정보</span> </a>
-      </li>      
+      </li>
     </ul>
 
   </div>
