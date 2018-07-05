@@ -1,15 +1,49 @@
 'use strict';
 
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+var _slicedToArray = function () {
+  function sliceIterator(arr, i) {
+    var _arr = [];
+    var _n = true;
+    var _d = false;
+    var _e = undefined;
+    try {
+      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+        _arr.push(_s.value);
+        if (i && _arr.length === i) break;
+      }
+    } catch (err) {
+      _d = true;
+      _e = err;
+    } finally {
+      try {
+        if (!_n && _i["return"]) _i["return"]();
+      } finally {
+        if (_d) throw _e;
+      }
+    }
+    return _arr;
+  }
 
-angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $interval, authSvc, $rootScope, $scope, exRate) {
+  return function (arr, i) {
+    if (Array.isArray(arr)) {
+      return arr;
+    } else if (Symbol.iterator in Object(arr)) {
+      return sliceIterator(arr, i);
+    } else {
+      throw new TypeError("Invalid attempt to destructure non-iterable instance");
+    }
+  };
+}();
+
+angular.module('inspinia').controller('dashboardCtrl', function (financeSvc, $interval, authSvc, $rootScope, $scope, exRate) {
   'ngInject';
 
   var vm = this;
   vm.exRate = 0;
+  vm.coinOrder = financeSvc.getCoinOrder();
 
   vm.onInit = function () {
-    vm.tab='all'
+    vm.tab = 'all'
     console.log('app init');
     vm.stMoney = {
       // name: 'KRW',
@@ -40,13 +74,13 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
 
   vm.onInit();
 
-  $scope.$on("$destroy", function(){
+  $scope.$on("$destroy", function () {
     $interval.cancel(vm.appInterval);
   })
 
-  vm.getVmRow = function(data, key){
-    for(var i=0;i<data.length;i++){
-      if(data[i]['vmName'] == key){
+  vm.getVmRow = function (data, key) {
+    for (var i = 0; i < data.length; i++) {
+      if (data[i]['vmName'] == key) {
         return data[i];
       }
     }
@@ -146,7 +180,7 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
       financeSvc.getExchangeRate().then(function (res) {
         // console.log('exchange rate', res.data.results);
         vm.exRate = res.data.results;
-        exRate.data =  res.data.results;
+        exRate.data = res.data.results;
         if (vm.stMoney.name === undefined) {
           var value = vm.siteArray.filter(function (x) {
             return x.id === vm.use_sites[0];
@@ -154,8 +188,10 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
           changeST(value[0]);
         }
         updateView();
-      }).catch(function () {});
-    }).catch(function () {});
+      }).catch(function () {
+      });
+    }).catch(function () {
+    });
   }
 
   function createViewSet(vmArray) {
@@ -179,8 +215,8 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
         try {
           for (var _iterator3 = vm.viewArray.entries()[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
             var _step3$value = _slicedToArray(_step3.value, 2),
-                index = _step3$value[0],
-                value = _step3$value[1];
+              index = _step3$value[0],
+              value = _step3$value[1];
 
             // console.log('second for loop', index);
             if (vmItem.site_name === value.siteName && vmItem.country === value.country) {
@@ -192,7 +228,12 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
               // check if exist already or first
               if (newIndex < 0) {
                 // console.log('length 0', newIndex);
-                vm.viewArray[index].data.push({ vmName: vmItem.vm_name, vmRate: vmItem.vm_rate, vmRateBuy: vmItem.vm_rate_buy, vmRateSell: vmItem.vm_rate_sell });
+                vm.viewArray[index].data.push({
+                  vmName: vmItem.vm_name,
+                  vmRate: vmItem.vm_rate,
+                  vmRateBuy: vmItem.vm_rate_buy,
+                  vmRateSell: vmItem.vm_rate_sell
+                });
                 // console.log('no update', vmItem.updated);
                 // console.log('no update', (new Date(vmItem.updated)).getTime());
               } else {
@@ -262,7 +303,6 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
   }
 
   function updateView() {
-    // console.log('update', vm.viewArray)
     var stBTC = void 0;
     var stETH = void 0;
     var stETC = void 0;
@@ -298,9 +338,6 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
     var stSTEEM = void 0;
     var stSTRAT = void 0;
     var stMIT = void 0;
-
-
-
 
 
     var stBTCBuy = void 0;
@@ -377,8 +414,6 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
     var stMITSell = void 0;
 
 
-
-
     var _iteratorNormalCompletion4 = true;
     var _didIteratorError4 = false;
     var _iteratorError4 = undefined;
@@ -386,16 +421,16 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
     try {
       for (var _iterator4 = vm.viewArray.entries()[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
         var _step4$value = _slicedToArray(_step4.value, 2),
-            siteIndex = _step4$value[0],
-            siteValue = _step4$value[1];
+          siteIndex = _step4$value[0],
+          siteValue = _step4$value[1];
 
         // exchange rate
         var currencyName = vm.viewArray[siteIndex].currencyName;
         // console.log('site loop', siteIndex, siteValue)
 
         var _getExRate = getExRate(currencyName, 1),
-            rate = _getExRate.rate,
-            originRate = _getExRate.originRate;
+          rate = _getExRate.rate,
+          originRate = _getExRate.originRate;
 
         vm.viewArray[siteIndex].exRate = rate;
         vm.viewArray[siteIndex].originRate = originRate;
@@ -406,8 +441,8 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
         try {
           for (var _iterator5 = vm.viewArray[siteIndex].data.entries()[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
             var _step5$value = _slicedToArray(_step5.value, 2),
-                vmIndex = _step5$value[0],
-                vmValue = _step5$value[1];
+              vmIndex = _step5$value[0],
+              vmValue = _step5$value[1];
 
             var vmRate = vm.viewArray[siteIndex].data[vmIndex].vmRate;
             var vmRateBuy = vm.viewArray[siteIndex].data[vmIndex].vmRateBuy;
@@ -457,54 +492,54 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
                   stDASHSell = valueSell;
                   break;
                 case 'BCH':
-                    stBCH = value;
-                    stBCHBuy = valueBuy;
-                    stBCHSell = valueSell;
-                    break;
-                 case 'XMR':
-                    stXMR = value;
-                    stXMRBuy = valueBuy;
-                    stXMRSell = valueSell;
-                    break;
-                 case 'ZEC':
-                    stZEC = value;
-                    stZECBuy = valueBuy;
-                    stZECSell = valueSell;
-                    break;
-                  case 'QTUM':
-                    stQTUM = value;
-                    stQTUMBuy = valueBuy;
-                    stQTUMSell = valueSell;
-                    break;
-                  case 'BCC':
-                      stBCC = value;
-                      stBCCBuy = valueBuy;
-                      stBCCSell = valueSell;
-                      break;
-                  case 'NEO':
-                      stNEO = value;
-                      stNEOBuy = valueBuy;
-                      stNEOSell = valueSell;
-                  case 'OMG':
-                      stOMG = value;
-                      stOMGBuy = valueBuy;
-                      stOMGSell = valueSell;
-                      break;
-                  case 'BTG':
-                      stBTG = value;
-                      stBTGBuy = valueBuy;
-                      stBTGSell = valueSell;
-                      break;
-                  case 'EOS':
-                      stEOS = value;
-                      stEOSBuy = valueBuy;
-                      stEOSSell = valueSell;
-                      break;
-                  case 'IOTA':
-                      stIOTA = value;
-                      stIOTABuy = valueBuy;
-                      stIOTASell = valueSell;
-                      break;
+                  stBCH = value;
+                  stBCHBuy = valueBuy;
+                  stBCHSell = valueSell;
+                  break;
+                case 'XMR':
+                  stXMR = value;
+                  stXMRBuy = valueBuy;
+                  stXMRSell = valueSell;
+                  break;
+                case 'ZEC':
+                  stZEC = value;
+                  stZECBuy = valueBuy;
+                  stZECSell = valueSell;
+                  break;
+                case 'QTUM':
+                  stQTUM = value;
+                  stQTUMBuy = valueBuy;
+                  stQTUMSell = valueSell;
+                  break;
+                case 'BCC':
+                  stBCC = value;
+                  stBCCBuy = valueBuy;
+                  stBCCSell = valueSell;
+                  break;
+                case 'NEO':
+                  stNEO = value;
+                  stNEOBuy = valueBuy;
+                  stNEOSell = valueSell;
+                case 'OMG':
+                  stOMG = value;
+                  stOMGBuy = valueBuy;
+                  stOMGSell = valueSell;
+                  break;
+                case 'BTG':
+                  stBTG = value;
+                  stBTGBuy = valueBuy;
+                  stBTGSell = valueSell;
+                  break;
+                case 'EOS':
+                  stEOS = value;
+                  stEOSBuy = valueBuy;
+                  stEOSSell = valueSell;
+                  break;
+                case 'IOTA':
+                  stIOTA = value;
+                  stIOTABuy = valueBuy;
+                  stIOTASell = valueSell;
+                  break;
                 case 'ICX':
                   stICX = value;
                   stICXBuy = valueBuy;
@@ -647,55 +682,55 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
                   break;
 
                 case 'BCH':
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRate = stBCH - chVMRate;
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stBCHSell
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stBCHBuy - chVMRateSell;
-                    break;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRate = stBCH - chVMRate;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stBCHSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stBCHBuy - chVMRateSell;
+                  break;
                 case 'XMR':
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRate = stXMR - chVMRate;
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stXMRSell
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stXMRBuy - chVMRateSell;
-                    break;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRate = stXMR - chVMRate;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stXMRSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stXMRBuy - chVMRateSell;
+                  break;
                 case 'ZEC':
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRate = stZEC - chVMRate;
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stZECSell
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stZECBuy - chVMRateSell;
-                    break;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRate = stZEC - chVMRate;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stZECSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stZECBuy - chVMRateSell;
+                  break;
                 case 'QTUM':
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRate = stQTUM - chVMRate;
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stQTUMSell
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stQTUMBuy - chVMRateSell;
-                    break;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRate = stQTUM - chVMRate;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stQTUMSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stQTUMBuy - chVMRateSell;
+                  break;
                 case 'BCC':
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRate = stBCC - chVMRate;
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stBCCSell
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stBCCBuy - chVMRateSell;
-                    break;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRate = stBCC - chVMRate;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stBCCSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stBCCBuy - chVMRateSell;
+                  break;
                 case 'NEO':
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRate = stNEO - chVMRate;
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stNEOSell
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stNEOBuy - chVMRateSell;
-                    break;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRate = stNEO - chVMRate;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stNEOSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stNEOBuy - chVMRateSell;
+                  break;
                 case 'OMG':
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRate = stOMG - chVMRate;
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stOMGSell
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stOMGBuy - chVMRateSell;
-                    break;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRate = stOMG - chVMRate;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stOMGSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stOMGBuy - chVMRateSell;
+                  break;
                 case 'BTG':
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRate = stBTG - chVMRate;
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stBTGSell
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stBTGBuy - chVMRateSell;
-                    break;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRate = stBTG - chVMRate;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stBTGSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stBTGBuy - chVMRateSell;
+                  break;
                 case 'EOS':
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRate = stEOS - chVMRate;
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stEOSSell
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stEOSBuy - chVMRateSell;
-                    break;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRate = stEOS - chVMRate;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stEOSSell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stEOSBuy - chVMRateSell;
+                  break;
                 case 'IOTA':
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRate = stIOTA - chVMRate;
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stIOTASell
-                    vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stIOTABuy - chVMRateSell;
-                    break;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRate = stIOTA - chVMRate;
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stIOTASell
+                  vm.viewArray[siteIndex].data[vmIndex].realVMRateRecv = stIOTABuy - chVMRateSell;
+                  break;
                 case 'ICX':
                   vm.viewArray[siteIndex].data[vmIndex].realVMRate = stICX - chVMRate;
                   vm.viewArray[siteIndex].data[vmIndex].realVMRateSend = chVMRateBuy - stICXSell
@@ -840,13 +875,16 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
       }
     }
 
-    for(var i=0;i<vm.viewArray.length;i++){
-      var data = vm.viewArray[i]['data'];
+    for (var i = 0; i < vm.viewArray.length; i++) {
+      var data = _.sortBy(vm.viewArray[i]['data'], [function(row){return vm.coinOrder.indexOf(row.vmName)==-1?10000:vm.coinOrder.indexOf(row.vmName)}, function(row){return row.vmName}])
+      vm.viewArray[i]['data'] = data;
+
       var dataObj = {};
-      for(var j=0;j<data.length;j++){
+      for (var j = 0; j < data.length; j++) {
         dataObj[data[j].vmName] = data[j];
       }
       vm.viewArray[i]['dataObj'] = dataObj;
+
     }
     vm.viewDataSet = vm.viewArray;
   }
@@ -869,7 +907,7 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
       originRate = moneyObj[0].currency_unit * vm.stMoney.value / moneyObj[0].won_rate;
     }
     var stValue = krw / vm.stMoney.value;
-    return { rate: stValue, originRate: originRate };
+    return {rate: stValue, originRate: originRate};
   }
 
   function getSiteValues() {
@@ -881,8 +919,8 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
     try {
       var _loop2 = function _loop2() {
         var _step6$value = _slicedToArray(_step6.value, 2),
-            index = _step6$value[0],
-            value = _step6$value[1];
+          index = _step6$value[0],
+          value = _step6$value[1];
 
         var site = vm.siteArray.filter(function (x) {
           return x.id === value;
@@ -945,6 +983,6 @@ angular.module('inspinia').controller('dashboardCtrl', function(financeSvc, $int
 
   vm.selectRow = "";
   vm.getLiClassName = function (key) {
-      return key;
+    return key;
   }
 })

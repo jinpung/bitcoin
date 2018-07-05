@@ -1,13 +1,49 @@
-<div class="wrapper wrapper-content  animated fadeInRight" style="padding-bottom: 0px;">
-  <div class="row">
-    <div class="col-sm-12">
-    <div class="ibox">
-      <div class="ibox-content">
-        <div id="container" style="height: 550px;">
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-12 chart-header">
+    <h2>
 
-        </div>
-      </div>
-    </div>
-    </div>
+      <select class="form-control" ng-model="vm.viewMode" >
+        <option value="1">싸이트별 보기</option>
+        <option value="2">코인별 보기</option>
+      </select>
+
+      <span ng-if="vm.viewMode==1">
+        <select class="form-control" ng-model="vm.site1">
+          <option value="{{key}}" ng-repeat="(key, value) in vm.siteAry">{{key}}</option>
+        </select>
+        <select class="form-control" ng-model="vm.coin1" >
+          <option value="">전체</option>
+          <option value="{{coin}}" ng-repeat="coin in vm.siteAry[vm.site1]">{{coin}}</option>
+        </select>
+      </span>
+
+      <span ng-if="vm.viewMode==2">
+        <select class="form-control" ng-model="vm.coin2">
+          <option value="{{key}}" ng-repeat="(key, value) in vm.coinAry">{{key}}</option>
+        </select>
+        <select class="form-control" ng-model="vm.site2" >
+          <option value="">전체</option>
+          <option value="{{site}}" ng-repeat="site in vm.coinAry[vm.coin2]">{{site}}</option>
+        </select>
+      </span>
+
+
+
+
+    </h2>
+  </div>
+</div>
+</div>
+
+
+<div ng-if="vm.viewMode==1">
+  <div ng-repeat="coin in vm.siteAry[vm.site1]">
+    <coin-chart site-name="vm.site1" coin-name="coin" ng-if="coin==vm.coin1 || !vm.coin1"></coin-chart>
+  </div>
+</div>
+
+<div ng-if="vm.viewMode==2">
+  <div ng-repeat="site in vm.coinAry[vm.coin2]">
+    <coin-chart site-name="site" coin-name="vm.coin2" ng-if="site==vm.site2 || !vm.site2"></coin-chart>
   </div>
 </div>

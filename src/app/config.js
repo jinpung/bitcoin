@@ -6,7 +6,7 @@ angular.module('inspinia').factory('authInterceptor', function($rootScope, $q, $
     // Add authorization token to headers
     request: function request(config) {
       config.headers = config.headers || {};
-      
+
       if (sessionStorage.token) {
         config.headers['x-auth-token'] = sessionStorage.token;
       }

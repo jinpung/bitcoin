@@ -1247,6 +1247,10 @@ angular.module('inspinia').factory('financeSvc', function (APIENDPOINT, $http) {
     getCurrencies: function () {
       var array = ['USD', 'KRW', 'CNY', 'JPY'];
       return array;
+    },
+
+    getCoinOrder:function () {
+      return ["BTC","BCH", "ETH", "ETC", "LTC", "DASH", "EOS", "IOTA", "NEO", "QTUM", "XMR", "XRP", "ZEC"];
     }
   };
 
